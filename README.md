@@ -1,6 +1,6 @@
 # SHS
-.. image:: https://travis-ci.org/eyeeco/SHS.svg?branch=master
-    :target: https://travis-ci.org/eyeeco/SHS
+
+[![Build Status](https://travis-ci.org/eyeeco/SHS.svg?branch=master)](https://travis-ci.org/eyeeco/SHS)
 
 ### 学生作业管理系统需求分析
 1. 系统完成学生信息管理功能、提供学生的注册、签到功能（课堂签到）

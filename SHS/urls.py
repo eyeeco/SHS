@@ -18,10 +18,10 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    #url(r'^Authentication/', include('AUTHENTICATION.urls',
-    #    namespace='authentication')),
-    #url(r'^Homework/', include('HOMEWORK.urls',
-    #    namespace='homework')),
-    #url(r'^Teaching/', include('TEACHING.urls',
-    #    namespace='Teaching')),
+    url(r'^Authentication/', include('AUTHENTICATION.urls',
+        namespace='authentication')),
+    url(r'^Homework/', include('HOMEWORK.urls',
+        namespace='homework')),
+    url(r'^Teaching/', include('TEACHING.urls',
+        namespace='Teaching')),
 ]

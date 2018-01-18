@@ -5,10 +5,10 @@ from django.views.generic import ListView, CreateView, UpdateView
 from HOMEWORK.models import Homework
 from HOMEWORK.forms import HomeworkAdd
 
-# Create your views here.
+
 class HomeworkList(ListView):
     model = Homework
-    ordering = ['submit_time',]
+    ordering = ['submit_time', ]
     template_name = 'Homework/homework_list.html'
 
     def get_queryset(self):

@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-from ckeditor_uploader.fields import  RichTextUploadingField
+from ckeditor_uploader.fields import RichTextUploadingField
+
 
 class Homework(models.Model):
     title = models.CharField(max_length=100, verbose_name="标题")

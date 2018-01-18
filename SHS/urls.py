@@ -24,4 +24,5 @@ urlpatterns = [
         namespace='homework')),
     url(r'^Teaching/', include('TEACHING.urls',
         namespace='Teaching')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]

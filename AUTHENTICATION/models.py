@@ -14,7 +14,6 @@ class UserInfo(models.Model):
     identity = models.IntegerField(verbose_name='身份',
                                    choices=USER_IDENTITIES)
     phone = models.CharField(verbose_name='电话', max_length=20)
-    email = models.EmailField(verbose_name='电子邮件')
 
     class Meta:
         verbose_name = '用户信息'
@@ -30,10 +29,12 @@ class StudentInfo(UserInfo):
                                      parent_link=True,
                                      related_name='student_info')
     student_id = models.CharField(verbose_name='学号', max_length=20)
-    institute = models.IntegerField(verbose_name='学院',
-                                    choices=INSTITUTES,
-                                    default=INSTITUTES[0][0])
-    education = models.IntegerField(verbose_name='年级')
+    institute = models.CharField(verbose_name='学院', max_length=10,
+                                 choices=INSTITUTES,
+                                 default=INSTITUTES[0][0])
+    education = models.IntegerField(verbose_name='年级',
+                                    choices=EDUCATION_BACK,
+                                    default=EDUCATION_BACK[0][0])
 
     class Meta:
         verbose_name = '学生信息'

@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    '192.168.23.128'
+    '192.168.23.128',
+    '192.168.140.128',
 ]
 
 
@@ -43,7 +44,9 @@ INSTALLED_APPS = [
 
     'TEACHING',
     'HOMEWORK',
-    'AUTHENTICATION'
+    'AUTHENTICATION',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -58,10 +61,20 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'SHS.urls'
 
+CKEDITOR_JQUERY_URL = 'https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_IMAGE_BACKEND = 'PIL'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "SHS", 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,22 +112,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.\
-        UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.\
-        MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.\
-        CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.\
-        NumericPasswordValidator',
-    },
+
 ]
 
 

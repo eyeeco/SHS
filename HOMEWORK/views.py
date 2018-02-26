@@ -1,3 +1,54 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponse
+from django.views.generic import ListView, CreateView, UpdateView
 
-# Create your views here.
+from HOMEWORK.models import Homework, Upload
+from HOMEWORK.forms import HomeworkAdd, FileUploadForm
+
+
+class HomeworkList(ListView):
+    model = Homework
+    ordering = ['submit_time', ]
+    template_name = 'Homework/homework_list.html'
+
+    def get_queryset(self):
+        return super(HomeworkList, self).get_queryset()
+
+
+class HomeworkAdd(CreateView):
+    model = Homework
+    template_name = 'Homework/homework.html'
+    form_class = HomeworkAdd
+
+    def form_valid(self, form):
+        title = self.request.POST.get('title', None)
+        content = self.request.POST.get('editor', None)
+        homework = Homework(title=title, content=content)
+        homework.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        return 'list'
+
+
+class UploadAdd(CreateView):
+    model = Upload
+    form_class = FileUploadForm
+
+    def post(self, request, *args, **kwargs):
+        my_form = FileUploadForm(request.POST, request.FILES)
+        if my_form.is_valid():
+            # f = my_form.cleaned_data['my_file']
+            # handle_uploaded_file(f)
+            try:
+                file_model = Upload()
+                file_model.file_field = my_form.cleaned_data['file_field']
+                file_model.save()
+                return HttpResponse('Upload Success')
+            except Exception as e:
+                print(str(e))
+        return render(request, 'Homework/upload_temp.html', {'form': my_form})
+
+    def get(self, request, *args, **kwargs):
+        my_form = FileUploadForm()
+        return render(request, 'Homework/upload_temp.html', {'form': my_form})

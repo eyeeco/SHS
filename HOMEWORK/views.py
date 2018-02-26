@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import ListView, CreateView, UpdateView
 
-from HOMEWORK.models import Homework
-from HOMEWORK.forms import HomeworkAdd
+from HOMEWORK.models import Homework, Upload
+from HOMEWORK.forms import HomeworkAdd, FileUploadForm
 
 
 class HomeworkList(ListView):
@@ -29,3 +29,26 @@ class HomeworkAdd(CreateView):
 
     def get_success_url(self):
         return 'list'
+
+
+class UploadAdd(CreateView):
+    model = Upload
+    form_class = FileUploadForm
+
+    def post(self, request, *args, **kwargs):
+        my_form = FileUploadForm(request.POST, request.FILES)
+        if my_form.is_valid():
+            # f = my_form.cleaned_data['my_file']
+            # handle_uploaded_file(f)
+            try:
+                file_model = Upload()
+                file_model.file_field = my_form.cleaned_data['file_field']
+                file_model.save()
+                return HttpResponse('Upload Success')
+            except Exception as e:
+                print(str(e))
+        return render(request, 'Homework/upload_temp.html', {'form': my_form})
+
+    def get(self, request, *args, **kwargs):
+        my_form = FileUploadForm()
+        return render(request, 'Homework/upload_temp.html', {'form': my_form})

@@ -3,8 +3,8 @@ from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import ListView, CreateView, DeleteView
 
-from HOMEWORK.models import Homework
-from HOMEWORK.forms import HomeworkAdd
+from HOMEWORK.models import Homework, Upload
+from HOMEWORK.forms import HomeworkAdd, FileUploadForm
 
 
 class HomeworkList(ListView):
@@ -31,7 +31,7 @@ class HomeworkAdd(CreateView):
     def get_success_url(self):
         return 'list'
 
-"""
+
 class UploadAdd(CreateView):
     model = Upload
     form_class = FileUploadForm
@@ -75,4 +75,3 @@ class UploadCancel(DeleteView):
 
     def get_object(self):
         return Upload.objects.get(uid=self.kwargs.get("uid"))
-"""

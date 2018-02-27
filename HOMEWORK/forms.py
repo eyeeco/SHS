@@ -1,6 +1,6 @@
 import os
 from django import forms
-from HOMEWORK.models import Homework
+from HOMEWORK.models import Homework, Upload
 from django.forms import ModelForm
 
 
@@ -9,7 +9,7 @@ class HomeworkAdd(ModelForm):
         model = Homework
         fields = ['title', 'content']
 
-"""
+
 class FileUploadForm(ModelForm):
     def clean(self):
         cleaned_data = super(FileUploadForm, self).clean()
@@ -21,4 +21,3 @@ class FileUploadForm(ModelForm):
     class Meta:
         model = Upload
         fields = ['file_field']
-"""

@@ -14,7 +14,7 @@ class Homework(models.Model):
     def __unicode__(self):
         return self.name
 
-"""
+
 class Upload(models.Model):
     uid = models.UUIDField(default=uuid4, editable=False, unique=True)
     file_field = models.FileField(upload_to="upload/%Y/%m/%d")
@@ -22,4 +22,3 @@ class Upload(models.Model):
                                        auto_now_add=True)
     user = models.ForeignKey(User, verbose_name='User',
                              on_delete=models.CASCADE)
-"""

@@ -45,9 +45,9 @@ class UploadAdd(CreateView):
                 file_model = Upload()
                 file_model.file_field = my_form.cleaned_data['file_field']
                 file_model.user = self.request.user
-                print("111111111")
                 file_model.save()
-                return HttpResponse('Upload Success')
+                print(file_model.file_field.name)
+                return HttpResponseRedirect('/Homework/list')
             except Exception as e:
                 print(str(e))
         return render(request, 'Homework/upload_add.html', {'form': my_form})

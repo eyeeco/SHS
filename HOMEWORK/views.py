@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect, HttpResponse
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, DeleteView
 
 from HOMEWORK.models import Homework, Upload
 from HOMEWORK.forms import HomeworkAdd, FileUploadForm
@@ -47,8 +48,27 @@ class UploadAdd(CreateView):
                 return HttpResponse('Upload Success')
             except Exception as e:
                 print(str(e))
-        return render(request, 'Homework/upload_temp.html', {'form': my_form})
+        return render(request, 'Homework/upload_add.html', {'form': my_form})
 
     def get(self, request, *args, **kwargs):
         my_form = FileUploadForm()
-        return render(request, 'Homework/upload_temp.html', {'form': my_form})
+        return render(request, 'Homework/upload_add.html', {'form': my_form})
+
+
+class Uploadlist(ListView):
+    model = Upload
+    ordering = ['submit_time']
+    template_name = 'Homework/upload_list.html'
+
+    def get_queryset(self):
+        return super(Uploadlist, self).get_queryset()
+
+
+class UploadCancel(DeleteView):
+    model = Upload
+    success_url = reverse_lazy('homework:list')
+    template_name = 'Homework/upload_list.html'
+    context_object_name = "Upload_list"
+
+    def get_object(self):
+        return Upload.objects.get(uid=self.kwargs.get("uid"))

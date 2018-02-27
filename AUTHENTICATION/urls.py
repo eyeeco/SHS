@@ -7,6 +7,6 @@ register_patterns = [
 ]
 
 urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^$', views.IndexView.as_view(),  name='index'),
     url(r'^register/', include(register_patterns, namespace='register')),
 ]

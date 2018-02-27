@@ -44,6 +44,8 @@ class UploadAdd(CreateView):
             try:
                 file_model = Upload()
                 file_model.file_field = my_form.cleaned_data['file_field']
+                file_model.user = self.request.user
+                print("111111111")
                 file_model.save()
                 return HttpResponse('Upload Success')
             except Exception as e:
@@ -61,7 +63,8 @@ class Uploadlist(ListView):
     template_name = 'Homework/upload_list.html'
 
     def get_queryset(self):
-        return super(Uploadlist, self).get_queryset()
+        return super(Uploadlist, self).get_queryset().filter(
+            user=self.request.user)
 
 
 class UploadCancel(DeleteView):

@@ -1,5 +1,8 @@
-from .auth import (IndexView, StudentRegisterView, LoginView)
+from .auth import (IndexView, StudentRegisterView, LoginView, )
+from .info_detail import (InfoDetailBase, StudentInfoDetail)
+
 
 __all__ = [
-    'IndexView', 'StudentRegisterView', 'LoginView'
+    'IndexView', 'StudentRegisterView', 'LoginView', 'InfoDetailBase',
+    'StudentInfoDetail'
 ]

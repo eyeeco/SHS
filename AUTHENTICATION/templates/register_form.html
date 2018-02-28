@@ -1,16 +1,64 @@
+{% load filters %}
+
 <form id='infp-form' method="post" action="{{form_post_url}}">
     {% csrf_token %}
-    {% for field in form %}
     <div class="form-group">
         <div class="input-group">
-            <div class="input-group-addon input-group-addon-wide">{{field.label}}:</div>
-            {{field}}
+            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+            {{form.email|addcls:'form-control 电子邮箱'}}
         </div>
-        {% if field.errors %}
-        <p class="text-danger">{{field.errors.as_text}}</p>
-        {% endif %}
+   </div>
+   <div class="form-group">
+       <div class="input-group">
+           <div class="input-group-addon"><i class="fa fa-user"></i></div>
+           {{form.user_name|addcls:'form-control 用户名'}}
+       </div>
+  </div>
+  <div class="form-group">
+      <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-key"></i></div>
+          {{form.password|addcls:'form-control 密码'}}
+      </div>
+ </div>
+ <div class="form-group">
+     <div class="input-group">
+         <div class="input-group-addon"><i class="fa fa-key"></i></div>
+         {{form.confirm_password|addcls:'form-control 确认密码'}}
+     </div>
+ </div>
+ <div class="form-group">
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-user-circle"></i></div>
+        {{form.name|addcls:'form-control 姓名'}}
     </div>
-    {% endfor %}
+ </div>
+ <div class="form-group">
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+        {{form.phone|addcls:'form-control 电话'}}
+    </div>
+ </div>
+ <div class="form-group">
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-address-card"></i></div>
+        {{form.student_id|addcls:'form-control 学号'}}
+    </div>
+ </div>
+ <div class="form-group">
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-graduation-cap"></i></div>
+        {{form.institute|addcls:'form-control 学院'}}
+    </div>
+ </div>
+ <div class="form-group">
+    <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-map-signs"></i></div>
+        {{form.education|addcls:'form-control 年级'}}
+    </div>
+ </div>
+        {% if form.errors %}
+        <p class="text-danger">{{form.errors.as_text}}</p>
+        {% endif %}
     <div class="text-center">
     <button type="submit" class="btn btn-info btn-md btn-block">注册</button>
     </div>

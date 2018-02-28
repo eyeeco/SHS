@@ -1,6 +1,11 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from AUTHENTICATION.models import UserInfo, StudentInfo, TeacherInfo
+
+
+class LoginForm(AuthenticationForm):
+    pass
 
 
 class RegisterForm(forms.ModelForm):

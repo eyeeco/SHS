@@ -971,8 +971,7 @@ ul.activity-list > li {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  width: 70%;
-  height: 450px;
+  width: 80%;
   margin: 0 auto;
   background-color: #fff; }
   .auth-box:before {

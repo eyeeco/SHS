@@ -1,0 +1,25 @@
+{% load filters %}
+
+<form id='infp-form' method="post" action="{{form_post_url}}">
+    {% csrf_token %}
+   <div class="form-group">
+       <div class="input-group">
+           <div class="input-group-addon"><i class="fa fa-user"></i></div>
+           {{form.username|addcls:'form-control 用户名'}}
+       </div>
+  </div>
+  <div class="form-group">
+      <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-user"></i></div>
+          {{form.password|addcls:'form-control 密码'}}
+      </div>
+ </div>
+<div class="form-group">
+        {% if form.errors %}
+        <p class="text-danger">{{form.errors.as_text}}</p>
+        {% endif %}
+</div>
+    <div class="text-center">
+    <button type="submit" class="btn btn-info btn-md btn-block">登录</button>
+    </div>
+</form>

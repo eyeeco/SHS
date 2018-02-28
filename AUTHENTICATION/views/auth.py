@@ -1,5 +1,6 @@
 from django.views.generic import View, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView as _LoginView
 from django.views.generic import RedirectView, TemplateView
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.models import User
@@ -7,7 +8,7 @@ from django.contrib.auth import login
 from django.http import HttpResponseRedirect
 
 from AUTHENTICATION import USER_IDENTITY_STUDENT
-from AUTHENTICATION.forms import StudentRegisterForm
+from AUTHENTICATION.forms import StudentRegisterForm, LoginForm
 
 
 class IndexView(LoginRequiredMixin, TemplateView):
@@ -16,6 +17,11 @@ class IndexView(LoginRequiredMixin, TemplateView):
     """
 
     template_name = 'index.html'
+
+
+class LoginView(_LoginView):
+    template_name = 'login.html'
+    form_class = LoginForm
 
 
 class StudentRegisterView(CreateView):

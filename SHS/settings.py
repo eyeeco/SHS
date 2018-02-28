@@ -69,6 +69,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+TMP_FILES_ROOT = os.path.join(MEDIA_ROOT, 'tmp_files')
+TMP_FILES_URL = os.path.join(MEDIA_URL, 'tmp_files')
+
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 CKEDITOR_IMAGE_BACKEND = 'PIL'

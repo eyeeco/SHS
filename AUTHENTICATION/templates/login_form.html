@@ -10,7 +10,7 @@
   </div>
   <div class="form-group">
       <div class="input-group">
-          <div class="input-group-addon"><i class="fa fa-user"></i></div>
+          <div class="input-group-addon"><i class="fa fa-key"></i></div>
           {{form.password|addcls:'form-control 密码'}}
       </div>
  </div>
@@ -21,5 +21,9 @@
 </div>
     <div class="text-center">
     <button type="submit" class="btn btn-info btn-md btn-block">登录</button>
+    </div>
+    <br>
+    <div class="bottom">
+      <span class="helper-text"><i class="fa fa-lock"></i> <a href="{% url 'auth:register:index' %}">注册新帐号?</a></span>
     </div>
 </form>

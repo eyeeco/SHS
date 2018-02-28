@@ -35,6 +35,9 @@ class StudentInfo(UserInfo):
     education = models.IntegerField(verbose_name='年级',
                                     choices=EDUCATION_BACK,
                                     default=EDUCATION_BACK[0][0])
+    homework_count = models.IntegerField(verbose_name='已提交作业数',
+                                         null=True, blank=True,
+                                         default=0)
 
     class Meta:
         verbose_name = '学生信息'

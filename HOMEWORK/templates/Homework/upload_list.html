@@ -15,9 +15,12 @@
             <td>{{sheet.file_field}}</td>
             <td>{{sheet.submit_time}}</td>
             <td>
+              <div>
                 <form action="{% url 'homework:cancel' sheet.uid %}" method="post">{% csrf_token %}
+                  <a type="button" class="btn btn-info" href="{% url 'homework:download' sheet.uid %}">下载</a>
                   <input class="btn btn-danger" type="submit" value="删除" onclick="if(confirm('Are you sure you want to delete the file ?')==false)return false;"/>
                 </form>
+              </div>
             </td>
         </tr>
         {% endfor %}

@@ -8,4 +8,6 @@ urlpatterns = [
     url(r'^upload/$', views.UploadAdd.as_view(), name='upload'),
     url(r'^cancel/(?P<uid>.+)$', views.UploadCancel.as_view(),
         name='cancel'),
+    url(r'^download/(?P<uid>.+)$', views.Download.as_view(),
+        name='download'),
 ]

@@ -34,9 +34,9 @@ class StudentHomeworkExport(DetailView):
     model = StudentInfo
 
     def post(self, request, *args, **kwargs):
-        name = self.get_object().user_info
+        student = self.get_object()
         self.object = self.get_object().user_info.user.upload_set.all()
-        export_homework(self.object, name)
+        export_homework(self.object, student)
         return redirect('/Teaching')
 
 
@@ -44,7 +44,7 @@ class AllHomeworkExport(DetailView):
     model = StudentInfo
 
     def get(self, request, *args, **kwargs):
-        name = '全部作业'
+        # name = '全部作业'
         temp = {}
         student = StudentInfo.objects.all().order_by('student_id')
         for stu in student:

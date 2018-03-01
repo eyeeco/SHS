@@ -38,6 +38,8 @@ class StudentInfo(UserInfo):
     homework_count = models.IntegerField(verbose_name='已提交作业数',
                                          null=True, blank=True,
                                          default=0)
+    description = models.CharField(verbose_name='个人简介', max_length=100,
+                                   null=True, blank=True)
 
     class Meta:
         verbose_name = '学生信息'

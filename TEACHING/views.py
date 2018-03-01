@@ -15,6 +15,7 @@ class StudentList(ListView):
         student_list = StudentInfo.objects.all().order_by('student_id')
         for stu in student_list:
             stu.homework_count = stu.user_info.user.upload_set.all().count()
+            stu.save()
         return student_list
 
 

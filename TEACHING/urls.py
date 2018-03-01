@@ -6,4 +6,6 @@ urlpatterns = [
     url(r'^$', views.StudentList.as_view(), name='index'),
     url(r'^export/(?P<uid>.+)$', views.StudentHomeworkExport.as_view(),
         name='export'),
+    url(r'^allexport$', views.AllHomeworkExport.as_view(),
+        name='allexport'),
 ]

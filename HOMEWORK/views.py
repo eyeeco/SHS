@@ -94,5 +94,6 @@ class Download(DeleteView):
         file = Upload.objects.get(uid=self.kwargs.get("uid")).file_field.path
         response = StreamingHttpResponse(file_iterator(file))
         response['Content-Type'] = 'application/octet-stream'
-        response['Content-Disposition'] = 'attachment;filename="{0}"'.format(file)
+        response['Content-Disposition'] = 'attachment;\
+                                          filename="{0}"'.format(file)
         return response

@@ -40,6 +40,8 @@ class StudentInfo(UserInfo):
                                          default=0)
     description = models.CharField(verbose_name='个人简介', max_length=100,
                                    null=True, blank=True)
+    status = models.BooleanField(verbose_name='是否导出',
+                                 default=False)
 
     class Meta:
         verbose_name = '学生信息'

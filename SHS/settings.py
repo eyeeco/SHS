@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     '192.168.23.128',
     '192.168.140.128',
+    '123.207.226.25'
 ]
 
 
@@ -106,8 +107,8 @@ DATABASES = {
         'NAME': 'SHS',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '192.168.3.2',
-        'PORT': '3313',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
         'OPTIONS': {
             'sql_mode': 'STRICT_TRANS_TABLES',
         },

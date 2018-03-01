@@ -6,9 +6,15 @@ register_patterns = [
     url(r'^$', views.StudentRegisterView.as_view(), name='index'),
 ]
 
+info_update_patterns = [
+    url(r'^student/(?P<uid>.+)$', views.StudentInfoUpdate.as_view(),
+        name='student'),
+]
+
 info_patterns = [
     url(r'^student/(?P<uid>.+)$', views.StudentInfoDetail.as_view(),
-        name='student')
+        name='student'),
+    url('^update/', include(info_update_patterns, namespace='update')),
 ]
 
 urlpatterns = [

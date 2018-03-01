@@ -39,7 +39,7 @@
 										<ul class="list-unstyled list-justify">
 											<li>姓名 <span>{{object.user.first_name}}</span></li>
 											<li>学号 <span>{{object.student_id}}</span></li>
-											<li>专业 <span>{{object.get_institute_display}}</span></li>
+											<li>学院 <span>{{object.get_institute_display}}</span></li>
 											<li>年级 <span>{{object.get_education_display}}</a></span></li>
 										</ul>
 									</div>
@@ -48,14 +48,14 @@
 										<h4 class="heading">个人简介</h4>
 										<p>{{object.description}}</p>
 									</div>
-									<div class="text-center"><a href="#" class="btn btn-primary">编辑你的个人信息</a></div>
+									<div class="text-center"><a href="{% url 'auth:info:update:student' object.uid %}" class="btn btn-primary">编辑你的个人信息</a></div>
 								</div>
 								<!-- END PROFILE DETAIL -->
 							</div>
 							<!-- END LEFT COLUMN -->
 							<!-- RIGHT COLUMN -->
 							<div class="profile-right" style="height:700px">
-								<h4 class="heading">个人活动记录</h4>
+								<h4 class="heading"></h4>
 							</div>
 							<!-- END RIGHT COLUMN -->
 						</div>

@@ -8,6 +8,24 @@ class LoginForm(AuthenticationForm):
     pass
 
 
+class StudentUpdateForm(forms.ModelForm):
+    name = forms.CharField(
+        label='姓名',
+        widget=forms.TextInput())
+    phone = forms.CharField(
+        label='电话',
+        widget=forms.TextInput(),
+        min_length=11,
+        max_length=11)
+    email = forms.EmailField(
+        label='邮箱')
+
+    class Meta:
+        model = StudentInfo
+        fields = ['name', 'email', 'phone', 'student_id', 'institute',
+                  'description']
+
+
 class RegisterForm(forms.ModelForm):
     # TODO: Define other fields here
     user_name = forms.CharField(label='用户名', widget=forms.TextInput())

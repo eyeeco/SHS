@@ -16,6 +16,7 @@ def export_homework(homework, name):
     url_path = osp.join(settings.TMP_FILES_URL, fname)
     return url_path
 
+
 def export_allhomework(temp, student):
     document = Document()
     for stu in student:
@@ -24,7 +25,7 @@ def export_allhomework(temp, student):
             file = docx.Document(word.file_field)
             for element in file.element.body:
                 document.element.body.append(element)
-    fname = 'all.docx';
+    fname = 'all.docx'
     save_path = osp.join(settings.TMP_FILES_ROOT, fname)
     document.save(save_path)
     url_path = osp.join(settings.TMP_FILES_URL, fname)

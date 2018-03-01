@@ -44,7 +44,7 @@ class AllHomeworkExport(DetailView):
     model = StudentInfo
 
     def get(self, request, *args, **kwargs):
-        name = '全部作业'
+        # name = '全部作业'
         temp = {}
         student = StudentInfo.objects.all().order_by('student_id')
         for stu in student:

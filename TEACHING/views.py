@@ -61,7 +61,8 @@ class AllHomeworkExport(DetailView):
             homework = stu.user_info.user.upload_set.all()
             temp[stu] = homework
         path = export_allhomework(temp, student)
-        response = StreamingHttpResponse(file_iterator(str(settings.BASE_DIR) + path))
+        response = StreamingHttpResponse(
+            file_iterator(str(settings.BASE_DIR) + path))
         response['Content-Type'] = 'application/octet-stream'
         response['Content-Disposition'] = 'attachment;\
             filename="{0}"'.format('all.docx').encode('utf-8', 'ISO-8859-1')

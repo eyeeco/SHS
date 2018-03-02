@@ -25,6 +25,9 @@
             <td>
                 <form action="{% url 'Teaching:export' sheet.uid %}" method="post">{% csrf_token %}
                   <input class="btn" type="submit" value="导出" onclick="if(confirm('Are you sure you want to export the file ?')==false)return false;"/>
+                  {% if sheet.status %}
+                  <a type="button" class="btn btn-info" href="{% url 'Teaching:download' sheet.uid %}">下载</a>
+                  {% endif %}
                 </form>
             </td>
         </tr>

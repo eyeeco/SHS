@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.http import StreamingHttpResponse
 from django.views.generic import ListView, CreateView, DeleteView, DetailView
 

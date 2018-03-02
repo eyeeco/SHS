@@ -8,4 +8,6 @@ urlpatterns = [
         name='export'),
     url(r'^allexport$', views.AllHomeworkExport.as_view(),
         name='allexport'),
+    url(r'^download/(?P<uid>.+)$', views.ExportDownload.as_view(),
+        name='download'),
 ]

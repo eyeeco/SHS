@@ -27,13 +27,15 @@ def export_homework(homework, student):
     institute = document.add_paragraph()
     run = institute.add_run('                                学 院（系）：')
     run.font.size = Pt(18)
-    run = institute.add_run('          ' + str(student.get_institute_display()) + '        ')
+    run = institute.add_run('          ' + str(
+                            student.get_institute_display()) + '        ')
     run.font.size = Pt(18)
     run.font.underline = True
     education = document.add_paragraph()
     run = education.add_run('                                年       级：')
     run.font.size = Pt(18)
-    run = education.add_run('          ' + str(student.get_education_display()) + '        ')
+    run = education.add_run('          ' + str(
+                            student.get_education_display()) + '        ')
     run.font.size = Pt(18)
     run.font.underline = True
     name = document.add_paragraph()
@@ -45,14 +47,15 @@ def export_homework(homework, student):
     student_id = document.add_paragraph()
     run = student_id.add_run('                                学       号：')
     run.font.size = Pt(18)
-    run = student_id.add_run('          ' + str(student.student_id) + '        ')
+    run = student_id.add_run('          ' + str(
+                             student.student_id) + '        ')
     run.font.size = Pt(18)
     run.font.underline = True
     subtime = document.add_paragraph()
     run = subtime.add_run('                                时       间：')
     run.font.size = Pt(18)
-    run = subtime.add_run('      ' + time.strftime('%Y-%m-%d',time.localtime(
-                       time.time())) + '      ')
+    run = subtime.add_run('      ' + time.strftime('%Y-%m-%d', time.localtime(
+                          time.time())) + '      ')
     run.font.size = Pt(18)
     run.font.underline = True
     document.add_paragraph()

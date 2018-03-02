@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect, HttpResponse
 from django.http import StreamingHttpResponse
-from django.views.generic import ListView, CreateView, DeleteView
+from django.views.generic import ListView, CreateView, DeleteView, DetailView
 
 from HOMEWORK.models import Homework, Upload
 from HOMEWORK.forms import HomeworkAdd, FileUploadForm
@@ -78,7 +78,7 @@ class UploadCancel(DeleteView):
         return Upload.objects.get(uid=self.kwargs.get("uid"))
 
 
-class Download(DeleteView):
+class Download(DetailView):
     model = Upload
     success_url = reverse_lazy('homework:list')
 
@@ -91,9 +91,10 @@ class Download(DeleteView):
                         yield c
                     else:
                         break
-        file = Upload.objects.get(uid=self.kwargs.get("uid")).file_field.path
-        response = StreamingHttpResponse(file_iterator(file))
+        file = Upload.objects.get(uid=self.kwargs.get("uid")).file_field
+        response = StreamingHttpResponse(file_iterator(file.path))
         response['Content-Type'] = 'application/octet-stream'
         response['Content-Disposition'] = 'attachment;\
-                                          filename="{0}"'.format(file)
+            filename="{0}"'.format(
+            file.name.split('/')[-1]).encode('utf-8', 'ISO-8859-1')
         return response

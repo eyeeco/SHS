@@ -1,13 +1,16 @@
 import os
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.http import StreamingHttpResponse
 
 from AUTHENTICATION.models import StudentInfo
+from TEACHING.models import UploadTeacher
 from TEACHING.utils import export_homework, export_allhomework
+from TEACHING.forms import FileUploadForm
 
 
 class StudentList(ListView):
@@ -93,4 +96,77 @@ class ExportDownload(DetailView):
             filename="{0}"'.format(
             str(student.user_info) + '_' + str(
                 student.student_id) + '.docx').encode('utf-8', 'ISO-8859-1')
+        return response
+
+
+class UploadHomework(CreateView):
+    model = UploadTeacher
+    form_class = FileUploadForm
+
+    def post(self, request, *args, **kwargs):
+        my_form = FileUploadForm(request.POST, request.FILES)
+        if my_form.is_valid():
+            # f = my_form.cleaned_data['my_file']
+            # handle_uploaded_file(f)
+            try:
+                file_model = UploadTeacher()
+                file_model.file_field = my_form.cleaned_data['file_field']
+                file_model.user = self.request.user
+                file_model.save()
+                return HttpResponseRedirect('/Teaching/homeworklist')
+            except Exception as e:
+                print(str(e))
+        return render(request, 'Teaching/homework_add.html', {'form': my_form})
+
+    def get(self, request, *args, **kwargs):
+        my_form = FileUploadForm()
+        return render(request, 'Teaching/homework_add.html', {'form': my_form})
+
+
+class HomeworkList(ListView):
+    model = UploadTeacher
+    ordering = ['submit_time']
+    template_name = 'Teaching/homework_list.html'
+    can_delete = False
+
+    def get_queryset(self):
+        objects = super(HomeworkList, self).get_queryset()
+        if self.request.user == objects[0].user:
+            self.can_delete = True
+        return objects
+
+    def get_context_data(self, **kwargs):
+        context = super(HomeworkList, self).get_context_data(**kwargs)
+        context['can_delete'] = self.can_delete
+        return context
+
+
+class HomeworkDelete(DeleteView):
+    model = UploadTeacher
+    success_url = reverse_lazy('Teaching:homeworklist')
+    template_name = 'Teaching/homework_list.html'
+
+    def get_object(self):
+        return UploadTeacher.objects.get(uid=self.kwargs.get("uid"))
+
+
+class HomeworkDownload(DetailView):
+    model = UploadTeacher
+    success_url = reverse_lazy('Teaching:homeworklist')
+
+    def get(self, request, *args, **kwargs):
+        def file_iterator(file, chunk_size=512):
+            with open(file, 'rb') as f:
+                while True:
+                    c = f.read(chunk_size)
+                    if c:
+                        yield c
+                    else:
+                        break
+        file = UploadTeacher.objects.get(uid=self.kwargs.get("uid")).file_field
+        response = StreamingHttpResponse(file_iterator(file.path))
+        response['Content-Type'] = 'application/octet-stream'
+        response['Content-Disposition'] = 'attachment;\
+            filename="{0}"'.format(
+            file.name.split('/')[-1]).encode('utf-8', 'ISO-8859-1')
         return response

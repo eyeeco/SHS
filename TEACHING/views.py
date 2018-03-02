@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView
 from django.conf import settings
+from django.http import HttpResponse
 from django.http import StreamingHttpResponse
 
 from AUTHENTICATION.models import StudentInfo
@@ -45,14 +46,26 @@ class AllHomeworkExport(DetailView):
     model = StudentInfo
 
     def get(self, request, *args, **kwargs):
+        def file_iterator(file, chunk_size=512):
+            with open(file, 'rb') as f:
+                while True:
+                    c = f.read(chunk_size)
+                    if c:
+                        yield c
+                    else:
+                        break
         # name = '全部作业'
         temp = {}
         student = StudentInfo.objects.all().order_by('student_id')
         for stu in student:
             homework = stu.user_info.user.upload_set.all()
             temp[stu] = homework
-        export_allhomework(temp, student)
-        return redirect('/Teaching')
+        path = export_allhomework(temp, student)
+        response = StreamingHttpResponse(file_iterator(str(settings.BASE_DIR) + path))
+        response['Content-Type'] = 'application/octet-stream'
+        response['Content-Disposition'] = 'attachment;\
+            filename="{0}"'.format('all.docx').encode('utf-8', 'ISO-8859-1')
+        return response
 
 
 class ExportDownload(DetailView):

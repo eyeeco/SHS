@@ -7,4 +7,5 @@ uWSGI==2.0.15
 django-ckeditor==5.4.0
 python-pdf
 pdfkit
+PyPDF2
 lxml

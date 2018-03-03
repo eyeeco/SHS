@@ -4,11 +4,11 @@
 <!-- MAIN CONTENT -->
 <div class="main-content">
   <div class="container-fluid">
-    <div class="col-md-8">
+    <div class="col-md-12">
 							<!-- TABLE HOVER -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">已上传文件列表</h3>
+									<h3 class="panel-title">待完成作业模板</h3>
 								</div>
 								<div class="panel-body">
 									<table class="table table-hover">
@@ -23,12 +23,12 @@
                       {% for sheet in object_list %}
                       <tr>
                           <td>{{sheet.file_field}}</td>
-                          <td>{{sheet.submit_time}}</td>
+                          <td>{{sheet.submit_time|date:'Y-m-d'}}</td>
                           <td>
                             <div>
                               <form action="{% url 'Teaching:homeworkdelete' sheet.uid %}" method="post">{% csrf_token %}
                                 <a type="button" class="btn btn-info" href="{% url 'Teaching:homeworkdownload' sheet.uid %}">下载</a>
-                                {% if can_delete %}
+                                {% if request.user.user_info.identity == USER_IDENTITY_TEACHER %}
                                 <input class="btn btn-danger" type="submit" value="删除" onclick="if(confirm('Are you sure you want to delete the file ?')==false)return false;"/>
                                 {% endif %}
                               </form>

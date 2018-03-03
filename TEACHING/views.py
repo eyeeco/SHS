@@ -25,7 +25,7 @@ class StudentList(ListView):
             stu.homework_count = stu.user_info.user.upload_set.all().count()
             if os.path.exists(str(settings.BASE_DIR) + str(
                               settings.TMP_FILES_URL) + '/' + str(
-                              stu.user_info) + '.docx'):
+                              stu.user_info) + '.pdf'):
                 stu.status = True
             else:
                 stu.status = False
@@ -41,7 +41,7 @@ class StudentHomeworkExport(DetailView):
     def post(self, request, *args, **kwargs):
         student = self.get_object()
         self.object = self.get_object().user_info.user.upload_set.all()
-        export_homework(self.object, student)
+        export_homework(request, self.object, student)
         return redirect('/Teaching')
 
 
@@ -65,10 +65,10 @@ class AllHomeworkExport(DetailView):
             temp[stu] = homework
         path = export_allhomework(temp, student)
         response = StreamingHttpResponse(
-            file_iterator(str(settings.BASE_DIR) + path))
+            file_iterator(path))
         response['Content-Type'] = 'application/octet-stream'
         response['Content-Disposition'] = 'attachment;\
-            filename="{0}"'.format('all.docx').encode('utf-8', 'ISO-8859-1')
+            filename="{0}"'.format('all.pdf').encode('utf-8', 'ISO-8859-1')
         return response
 
 
@@ -89,13 +89,13 @@ class ExportDownload(DetailView):
         student = self.get_object()
         file_path = str(settings.BASE_DIR) + str(
             settings.TMP_FILES_URL) + '/' + str(
-            student.user_info) + '.docx'
+            student.user_info) + '.pdf'
         response = StreamingHttpResponse(file_iterator(file_path))
         response['Content-Type'] = 'application/octet-stream'
         response['Content-Disposition'] = 'attachment;\
             filename="{0}"'.format(
             str(student.user_info) + '_' + str(
-                student.student_id) + '.docx').encode('utf-8', 'ISO-8859-1')
+                student.student_id) + '.pdf').encode('utf-8', 'ISO-8859-1')
         return response
 
 
@@ -127,17 +127,13 @@ class HomeworkList(ListView):
     model = UploadTeacher
     ordering = ['submit_time']
     template_name = 'Teaching/homework_list.html'
-    can_delete = False
 
     def get_queryset(self):
         objects = super(HomeworkList, self).get_queryset()
-        if self.request.user == objects[0].user:
-            self.can_delete = True
         return objects
 
     def get_context_data(self, **kwargs):
         context = super(HomeworkList, self).get_context_data(**kwargs)
-        context['can_delete'] = self.can_delete
         return context
 
 

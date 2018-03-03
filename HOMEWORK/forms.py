@@ -14,7 +14,7 @@ class FileUploadForm(ModelForm):
     def clean(self):
         cleaned_data = super(FileUploadForm, self).clean()
         extension = self.cleaned_data.get('file_field').name.split('.')[-1]
-        if extension not in ["doc", "docx"]:
+        if extension not in ["pdf"]:
             raise forms.ValidationError('Filetype Error!')
         return cleaned_data
 

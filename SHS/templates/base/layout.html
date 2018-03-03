@@ -42,7 +42,10 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{% static 'assets/img/user.png' %}" class="img-circle" alt="Avatar"> <span>{{user.first_name}}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="{% url 'auth:logout' %}"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+								{% if request.user.user_info.identity == USER_IDENTITY_STUDENT %}
+								<li><a href="{% url 'tools:profile' user.user_info.uid %}" target="_blank"><i class="lnr lnr-bookmark"></i> <span>查看你的个人作业封皮</span></a></li>
+								{% endif %}
+								<li><a href="{% url 'auth:logout' %}"><i class="lnr lnr-exit"></i> <span>登出</span></a></li>
 							</ul>
 						</li>
 						{% endif %}
@@ -53,7 +56,7 @@
 		<!-- END NAVBAR -->
 		<!-- LEFT SIDEBAR -->
     {% block navigation %}
-		
+
     {% endblock %}
 		<!-- END LEFT SIDEBAR -->
 		<!-- MAIN -->

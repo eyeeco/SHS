@@ -4,39 +4,50 @@
 <!-- MAIN CONTENT -->
 <div class="main-content">
   <div class="container-fluid">
-    <table class="table">
-        <tr>
-            <th>姓名</th>
-            <th>学号</th>
-            <th>已提交作业数量</th>
-            <th>操作</th>
-            <th>状态</th>
-        </tr>
-        {% for sheet in object_list %}
-        <tr>
-            <td>{{sheet.user_info}}</td>
-            <td>{{sheet.student_id}}</td>
-            <td>{{sheet.homework_count}}</td>
-            {% if sheet.status %}
-            <td>已导出</td>
-            {% else %}
-            <td>未导出</td>
-            {% endif %}
-            <td>
-                <form action="{% url 'Teaching:export' sheet.uid %}" method="post">{% csrf_token %}
-                  <input class="btn" type="submit" value="导出" onclick="if(confirm('Are you sure you want to export the file ?')==false)return false;"/>
-                  {% if sheet.status %}
-                  <a type="button" class="btn btn-info" href="{% url 'Teaching:download' sheet.uid %}">下载</a>
-                  {% endif %}
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-    <div>
-      <a type="button" class="btn btn-info" href="{% url 'Teaching:allexport' %}">全部导出</a>
-    </div>
-  </div>
+    <div class="col-md-12">
+							<!-- TABLE HOVER -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">导出学生作业</h3>
+								</div>
+								<div class="panel-body">
+                  <table class="table">
+                      <tr>
+                          <th>姓名</th>
+                          <th>学号</th>
+                          <th>已提交作业数量</th>
+                          <th>操作</th>
+                          <th>状态</th>
+                      </tr>
+                      {% for sheet in object_list %}
+                      <tr>
+                          <td>{{sheet.user_info}}</td>
+                          <td>{{sheet.student_id}}</td>
+                          <td>{{sheet.homework_count}}</td>
+                          {% if sheet.status %}
+                          <td>已导出</td>
+                          {% else %}
+                          <td>未导出</td>
+                          {% endif %}
+                          <td>
+                              <form action="{% url 'Teaching:export' sheet.uid %}" method="post">{% csrf_token %}
+                                <input class="btn" type="submit" value="导出" onclick="if(confirm('Are you sure you want to export the file ?')==false)return false;"/>
+                                {% if sheet.status %}
+                                <a type="button" class="btn btn-info" href="{% url 'Teaching:download' sheet.uid %}">下载</a>
+                                {% endif %}
+                              </form>
+                          </td>
+                      </tr>
+                      {% endfor %}
+                  </table>
+                      <div>
+                        <a type="button" class="btn btn-info" href="{% url 'Teaching:allexport' %}">全部导出</a>
+                      </div>
+								</div>
+							</div>
+							<!-- END TABLE HOVER -->
+						</div>
+</div>
 </div>
 </div>
 {% endblock%}

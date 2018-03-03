@@ -54,5 +54,7 @@ class TeacherInfo(UserInfo):
                                      parent_link=True,
                                      related_name='teacher_info')
     teacher_id = models.CharField(verbose_name='教工号', max_length=20)
-    Title = models.CharField(verbose_name='职称', choices=TEACHER_TITLE,
-                             max_length=10)
+    Title = models.IntegerField(verbose_name='职称', choices=TEACHER_TITLE,)
+
+    class Meta:
+        verbose_name = '教师信息'

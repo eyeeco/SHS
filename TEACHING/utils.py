@@ -1,94 +1,81 @@
-import docx
-import time
-import os.path as osp
-from docx import Document
-from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.shared import Pt
-from docx.oxml.ns import qn
+from django.urls import reverse_lazy, reverse
 from django.conf import settings
+import os.path as osp
+
+import pdfkit
+from PyPDF2 import PdfFileWriter, PdfFileReader
 
 
-def export_homework(homework, student):
-    document = Document()
-    document.add_paragraph()
-    document.add_paragraph()
-    title = document.add_heading('人工智能大作业', 0)
-    title.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    document.add_paragraph()
-    document.add_paragraph()
-    document.add_paragraph()
-    document.add_paragraph()
-    course = document.add_paragraph()
-    run = course.add_run('                                课  程  名：')
-    run.font.size = Pt(18)
-    run = course.add_run('          人工智能        ')
-    run.font.size = Pt(18)
-    run.font.underline = True
-    institute = document.add_paragraph()
-    run = institute.add_run('                                学 院（系）：')
-    run.font.size = Pt(18)
-    run = institute.add_run('          ' + str(
-                            student.get_institute_display()) + '        ')
-    run.font.size = Pt(18)
-    run.font.underline = True
-    education = document.add_paragraph()
-    run = education.add_run('                                年       级：')
-    run.font.size = Pt(18)
-    run = education.add_run('          ' + str(
-                            student.get_education_display()) + '        ')
-    run.font.size = Pt(18)
-    run.font.underline = True
-    name = document.add_paragraph()
-    run = name.add_run('                                学 生 姓 名：')
-    run.font.size = Pt(18)
-    run = name.add_run('          ' + str(student.user_info) + '        ')
-    run.font.size = Pt(18)
-    run.font.underline = True
-    student_id = document.add_paragraph()
-    run = student_id.add_run('                                学       号：')
-    run.font.size = Pt(18)
-    run = student_id.add_run('          ' + str(
-                             student.student_id) + '        ')
-    run.font.size = Pt(18)
-    run.font.underline = True
-    subtime = document.add_paragraph()
-    run = subtime.add_run('                                时       间：')
-    run.font.size = Pt(18)
-    run = subtime.add_run('      ' + time.strftime('%Y-%m-%d', time.localtime(
-                          time.time())) + '      ')
-    run.font.size = Pt(18)
-    run.font.underline = True
-    document.add_paragraph()
-    document.add_paragraph()
-    document.add_paragraph()
-    document.add_paragraph()
-    document.add_paragraph()
-    school = document.add_paragraph('大连理工大学')
-    school.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    school_en = document.add_paragraph('Dalian University of Technology')
-    school_en.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    document.add_page_break()
-    for word in homework:
-        file = docx.Document(word.file_field)
-        for element in file.element.body:
-            document.element.body.append(element)
-    fname = '{}.docx'.format(student.user_info)
+def MergePDF(filepath, filehead, outfile):
+    output = PdfFileWriter()
+    outputPages = 0
+    # 加封皮
+    input = PdfFileReader(open(filehead, "rb"))
+    pageCount = input.getNumPages()
+    outputPages += pageCount
+    for iPage in range(0, pageCount):
+        output.addPage(input.getPage(iPage))
+    # 添加内容
+    for each in filepath:
+        # 读取源pdf文件
+        pdf_path = osp.join(settings.MEDIA_ROOT, str(each.file_field))
+        input = PdfFileReader(open(pdf_path, "rb"))
+        # 获得源pdf文件中页面总数
+        pageCount = input.getNumPages()
+        outputPages += pageCount
+        # 分别将page添加到输出output中
+        for iPage in range(0, pageCount):
+            output.addPage(input.getPage(iPage))
+    # 最后写pdf文件
+    outputStream = open(outfile, "wb")
+    output.write(outputStream)
+    outputStream.close()
+
+
+def export_homework(request, homework, student):
+
+    # 下载封面
+    url_head = str(request.META.get('HTTP_HOST'))
+    url_foot = reverse("tools:profile", args=(student.user_info.uid,))
+    url = url_head + url_foot
+    fname = '{}的封皮.pdf'.format(student.user_info)
     save_path = osp.join(settings.TMP_FILES_ROOT, fname)
-    document.save(save_path)
-    url_path = osp.join(settings.TMP_FILES_URL, fname)
-    return url_path
+    pdfkit.from_url(url, save_path)
+
+    # 拼接作业
+    fname2 = '{}.pdf'.format(student.user_info)
+    save_path_content = osp.join(settings.TMP_FILES_ROOT, fname2)
+    MergePDF(homework, save_path, save_path_content)
+    return save_path_content
 
 
 def export_allhomework(temp, student):
-    document = Document()
+    output = PdfFileWriter()
+    outputPages = 0
     for stu in student:
         homework = temp[stu]
+        fname = '{}的封皮.pdf'.format(stu.user_info)
+        filehead = osp.join(settings.TMP_FILES_ROOT, fname)
+        # 加封皮
+        input = PdfFileReader(open(filehead, "rb"))
+        pageCount = input.getNumPages()
+        outputPages += pageCount
+        for iPage in range(0, pageCount):
+            output.addPage(input.getPage(iPage))
         for word in homework:
-            file = docx.Document(word.file_field)
-            for element in file.element.body:
-                document.element.body.append(element)
-    fname = 'all.docx'
+            # 读取源pdf文件
+            pdf_path = osp.join(settings.MEDIA_ROOT, str(word.file_field))
+            input = PdfFileReader(open(pdf_path, "rb"))
+            # 获得源pdf文件中页面总数
+            pageCount = input.getNumPages()
+            outputPages += pageCount
+            # 分别将page添加到输出output中
+            for iPage in range(0, pageCount):
+                output.addPage(input.getPage(iPage))
+    # 最后写pdf文件
+    fname = 'all.pdf'
     save_path = osp.join(settings.TMP_FILES_ROOT, fname)
-    document.save(save_path)
-    url_path = osp.join(settings.TMP_FILES_URL, fname)
-    return url_path
+    outputStream = open(save_path, "wb")
+    output.write(outputStream)
+    outputStream.close()
+    return save_path

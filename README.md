@@ -9,3 +9,7 @@
 4. 系统自动生成学生的作业文件，供学生单独打印、或者老师可以一起打印。
 
 #### Power By SHI实验室
+
+### 关于安装
+安装pdf插件时需要额外安装，请执行以下命令
+`sudo apt-get install wkhtmltopdf`

@@ -10,8 +10,14 @@
           <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>作业系统</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 							<div id="subPages" class="collapse ">
 								<ul class="nav">
-									<li><a href="{% url 'homework:list' %}" class="">作业列表</a></li>
+                  <li><a href="{% url 'Teaching:homeworklist' %}" class="">作业模板</a></li>
+                  {% if request.user.user_info.identity == USER_IDENTITY_STUDENT %}
+									<li><a href="{% url 'homework:list' %}" class="">已上传作业列表</a></li>
 									<li><a href="{% url 'homework:upload' %}" class="">上传作业</a></li>
+                  {% endif %}
+                  {% if request.user.user_info.identity == USER_IDENTITY_TEACHER %}
+                  <li><a href="{% url 'Teaching:addhomework' %}" class="">上传作业模板</a></li>
+                  {% endif %}
 								</ul>
 							</div>
         </li>
@@ -51,14 +57,19 @@
           <!-- PANEL NO PADDING -->
           <div class="panel">
             <div class="panel-heading">
-              <h3 class="panel-title">实验图片</h3>
+              <h3 class="panel-title">平台使用介绍</h3>
               <div class="right">
                 <button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
                 <button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
               </div>
             </div>
-            <div class="panel-body no-padding text-center">
-                <img src="{% static 'assets/img/rgzn.jpg' %}"  alt="Avatar" width='100%'>
+            <div class="panel-body">
+                <P>1 在<strong>个人信息</strong>页面完善自己的信息,在右上角个人作业封皮中确认信息</p>
+                <P>2 在<strong>作业系统->作业模板</strong>页面查看当前需要完成的作业，下载作业模板。<strong>作业模板是docx格式</strong></p>
+                <P>3 在下载的作业模板上依据上课所学完成作业，以自己能看懂的作业名或作业次数命名</p>
+                <P>4 将完成好的作业另存为转换成<strong>pdf格式</strong>，在<strong>作业系统->上传作业</strong>页面上传该文件</p>
+                <P><strong>！！！只接受pdf格式文件的上传！！！</strong></p>
+                <P>5 在<strong>作业系统->已上传作业列表</strong>页面查看当前作业，在允许提交时间里可以删除并重新传输</p>
             </div>
           </div>
           <!-- END PANEL NO PADDING -->

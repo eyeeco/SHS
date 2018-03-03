@@ -6,13 +6,19 @@
       <ul class="nav">
         <li><a href="{% url 'index' %}"><i class="lnr lnr-home"></i> <span>主页</span></a></li>
         <li>
-          <a  class="active" href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>作业系统</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-							<div id="subPages" class="collapse ">
-								<ul class="nav">
-									<li><a href="{% url 'homework:list' %}" class="">作业列表</a></li>
-									<li><a href="{% url 'homework:upload' %}" class="">上传作业</a></li>
-								</ul>
-							</div>
+          <a class="active" href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>作业系统</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+              <div id="subPages" class="collapse ">
+                <ul class="nav">
+                  <li><a href="{% url 'Teaching:homeworklist' %}" class="">作业模板</a></li>
+                  {% if request.user.user_info.identity == USER_IDENTITY_STUDENT %}
+                  <li><a href="{% url 'homework:list' %}" class="">已上传作业列表</a></li>
+                  <li><a href="{% url 'homework:upload' %}" class="">上传作业</a></li>
+                  {% endif %}
+                  {% if request.user.user_info.identity == USER_IDENTITY_TEACHER %}
+                  <li><a href="{% url 'Teaching:addhomework' %}" class="">上传作业模板</a></li>
+                  {% endif %}
+                </ul>
+              </div>
         </li>
         {% if request.user.user_info.identity == USER_IDENTITY_STUDENT %}
         <li><a href="{% url 'auth:info:student' request.user.user_info.uid %}"><i class="lnr lnr-user"></i> <span>个人信息</span></a></li>

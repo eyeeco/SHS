@@ -49,29 +49,21 @@ def export_homework(request, homework, student):
     return save_path_content
 
 
-def export_allhomework(temp, student):
+def export_allhomework(request, temp, student):
     output = PdfFileWriter()
     outputPages = 0
     for stu in student:
-        homework = temp[stu]
-        fname = '{}的封皮.pdf'.format(stu.user_info)
-        filehead = osp.join(settings.TMP_FILES_ROOT, fname)
-        # 加封皮
-        input = PdfFileReader(open(filehead, "rb"))
+        homework = stu.user_info.user.upload_set.all()
+        url_path = export_homework(request, homework, stu)
+        # 读取源pdf文件
+        pdf_path = osp.join(url_path)
+        input = PdfFileReader(open(pdf_path, "rb"))
+        # 获得源pdf文件中页面总数
         pageCount = input.getNumPages()
         outputPages += pageCount
+        # 分别将page添加到输出output中
         for iPage in range(0, pageCount):
             output.addPage(input.getPage(iPage))
-        for word in homework:
-            # 读取源pdf文件
-            pdf_path = osp.join(settings.MEDIA_ROOT, str(word.file_field))
-            input = PdfFileReader(open(pdf_path, "rb"))
-            # 获得源pdf文件中页面总数
-            pageCount = input.getNumPages()
-            outputPages += pageCount
-            # 分别将page添加到输出output中
-            for iPage in range(0, pageCount):
-                output.addPage(input.getPage(iPage))
     # 最后写pdf文件
     fname = 'all.pdf'
     save_path = osp.join(settings.TMP_FILES_ROOT, fname)

@@ -16,6 +16,7 @@
                   {% endif %}
                   {% if request.user.user_info.identity == USER_IDENTITY_TEACHER %}
                   <li><a href="{% url 'Teaching:addhomework' %}" class="">上传作业模板</a></li>
+                  <li><a href="{% url 'Teaching:index' %}" class="">导出作业</a></li>
                   {% endif %}
                 </ul>
               </div>

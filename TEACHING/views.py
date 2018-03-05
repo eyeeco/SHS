@@ -33,18 +33,6 @@ class StudentList(ListView):
         return student_list
 
 
-class StudentHomeworkExport(DetailView):
-    slug_field = 'uid'
-    slug_url_kwarg = 'uid'
-    model = StudentInfo
-
-    def post(self, request, *args, **kwargs):
-        student = self.get_object()
-        self.object = self.get_object().user_info.user.upload_set.all()
-        export_homework(request, self.object, student)
-        return redirect('/Teaching')
-
-
 class AllHomeworkExport(DetailView):
     model = StudentInfo
 
@@ -63,7 +51,7 @@ class AllHomeworkExport(DetailView):
         for stu in student:
             homework = stu.user_info.user.upload_set.all()
             temp[stu] = homework
-        path = export_allhomework(temp, student)
+        path = export_allhomework(request, temp, student)
         response = StreamingHttpResponse(
             file_iterator(path))
         response['Content-Type'] = 'application/octet-stream'
@@ -78,6 +66,10 @@ class ExportDownload(DetailView):
     model = StudentInfo
 
     def get(self, request, *args, **kwargs):
+        student = self.get_object()
+        self.object = self.get_object().user_info.user.upload_set.all()
+        export_homework(request, self.object, student)
+
         def file_iterator(file, chunk_size=512):
             with open(file, 'rb') as f:
                 while True:
@@ -86,7 +78,6 @@ class ExportDownload(DetailView):
                         yield c
                     else:
                         break
-        student = self.get_object()
         file_path = str(settings.BASE_DIR) + str(
             settings.TMP_FILES_URL) + '/' + str(
             student.user_info) + '.pdf'

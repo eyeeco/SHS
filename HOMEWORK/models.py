@@ -4,15 +4,7 @@ from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
 
-
-class Homework(models.Model):
-    title = models.CharField(max_length=100, verbose_name="标题")
-    content = RichTextField(blank=True, null=True, verbose_name="内容")
-    submit_time = models.DateTimeField(verbose_name="提交时间",
-                                       auto_now_add=True)
-
-    def __unicode__(self):
-        return self.name
+from AUTHENTICATION import PRACTICE_CLASS
 
 
 class Upload(models.Model):
@@ -22,3 +14,6 @@ class Upload(models.Model):
                                        auto_now_add=True)
     user = models.ForeignKey(User, verbose_name='User',
                              on_delete=models.CASCADE)
+    data_class = models.IntegerField(verbose_name='所属实践班',
+                                     choices=PRACTICE_CLASS,
+                                     default=PRACTICE_CLASS[1][0])

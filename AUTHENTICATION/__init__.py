@@ -105,3 +105,13 @@ TEACHER_TITLE = (
     (TEACHER_APROF, '副教授'),
     (TEACHER_PROF, '教授'),
 )
+
+CLASS_AI = 1
+CLASS_VR = 2
+CLASS_IH = 3
+
+PRACTICE_CLASS = (
+    (CLASS_AI, '人工智能实践班'),
+    (CLASS_VR, '虚拟现实实践班'),
+    (CLASS_IH, '智能硬件实践班'),
+)

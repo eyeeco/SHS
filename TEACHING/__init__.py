@@ -1,0 +1,7 @@
+HOMEWORK = 1
+DATA_DISPLAY = 2
+
+DATA_TYPE = (
+    (HOMEWORK, '作业'),
+    (DATA_DISPLAY, '资料')
+)

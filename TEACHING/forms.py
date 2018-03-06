@@ -15,4 +15,4 @@ class FileUploadForm(ModelForm):
     """
     class Meta:
         model = UploadTeacher
-        fields = ['file_field']
+        fields = ['data_type', 'file_field']

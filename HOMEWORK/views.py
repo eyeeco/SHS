@@ -4,33 +4,8 @@ from django.http import HttpResponseRedirect
 from django.http import StreamingHttpResponse
 from django.views.generic import ListView, CreateView, DeleteView, DetailView
 
-from HOMEWORK.models import Homework, Upload
-from HOMEWORK.forms import HomeworkAdd, FileUploadForm
-
-
-class HomeworkList(ListView):
-    model = Homework
-    ordering = ['submit_time', ]
-    template_name = 'Homework/homework_list.html'
-
-    def get_queryset(self):
-        return super(HomeworkList, self).get_queryset()
-
-
-class HomeworkAdd(CreateView):
-    model = Homework
-    template_name = 'Homework/homework.html'
-    form_class = HomeworkAdd
-
-    def form_valid(self, form):
-        title = self.request.POST.get('title', None)
-        content = self.request.POST.get('editor', None)
-        homework = Homework(title=title, content=content)
-        homework.save()
-        return HttpResponseRedirect(self.get_success_url())
-
-    def get_success_url(self):
-        return 'list'
+from HOMEWORK.models import Upload
+from HOMEWORK.forms import FileUploadForm
 
 
 class UploadAdd(CreateView):

@@ -81,4 +81,5 @@ class StudentRegisterForm(RegisterForm):
     class Meta:
         model = StudentInfo
         fields = ['email', 'user_name', 'password', 'confirm_password',
-                  'name', 'phone', 'student_id', 'institute', 'education']
+                  'name', 'phone', 'student_id', 'institute', 'education',
+                  'stu_class']

@@ -4,6 +4,7 @@ from django.contrib.auth.models import User as _User
 # Create your models here.
 from . import USER_IDENTITIES, USER_IDENTITY_UNSET
 from . import INSTITUTES, EDUCATION_BACK, TEACHER_TITLE
+from . import PRACTICE_CLASS
 
 
 class UserInfo(models.Model):
@@ -40,8 +41,8 @@ class StudentInfo(UserInfo):
                                          default=0)
     description = models.CharField(verbose_name='个人简介', max_length=100,
                                    null=True, blank=True)
-    status = models.BooleanField(verbose_name='是否导出',
-                                 default=False)
+    stu_class = models.IntegerField(verbose_name='实践班', choices=PRACTICE_CLASS,
+                                    default=PRACTICE_CLASS[0][0])
 
     class Meta:
         verbose_name = '学生信息'
@@ -55,6 +56,8 @@ class TeacherInfo(UserInfo):
                                      related_name='teacher_info')
     teacher_id = models.CharField(verbose_name='教工号', max_length=20)
     Title = models.IntegerField(verbose_name='职称', choices=TEACHER_TITLE,)
+    tea_class = models.IntegerField(verbose_name='实践班', choices=PRACTICE_CLASS,
+                                    default=PRACTICE_CLASS[0][0])
 
     class Meta:
         verbose_name = '教师信息'

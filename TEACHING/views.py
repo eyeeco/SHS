@@ -11,26 +11,19 @@ from AUTHENTICATION.models import StudentInfo
 from TEACHING.models import UploadTeacher
 from TEACHING.utils import export_homework, export_allhomework
 from TEACHING.forms import FileUploadForm
+from AUTHENTICATION import USER_IDENTITY_STUDENT, USER_IDENTITY_TEACHER
 
 
 class StudentList(ListView):
     model = StudentInfo
     ordering = ['student_id']
     template_name = 'Teaching/student_list.html'
-    export_status = False
 
     def get_queryset(self):
-        student_list = StudentInfo.objects.all().order_by('student_id')
-        for stu in student_list:
-            stu.homework_count = stu.user_info.user.upload_set.all().count()
-            if os.path.exists(str(settings.BASE_DIR) + str(
-                              settings.TMP_FILES_URL) + '/' + str(
-                              stu.user_info) + '.pdf'):
-                stu.status = True
-            else:
-                stu.status = False
-            stu.save()
-        return student_list
+        user_class = self.request.user.user_info.user_class
+        objects = super(StudentList, self).get_queryset().filter(
+            user_info__user_class__contains=user_class)
+        return objects
 
 
 class AllHomeworkExport(DetailView):
@@ -102,7 +95,9 @@ class UploadHomework(CreateView):
             try:
                 file_model = UploadTeacher()
                 file_model.file_field = my_form.cleaned_data['file_field']
+                file_model.data_type = my_form.cleaned_data['data_type']
                 file_model.user = self.request.user
+                file_model.data_class = self.request.user.user_info.user_class
                 file_model.save()
                 return HttpResponseRedirect('/Teaching/homeworklist/1')
             except Exception as e:
@@ -118,7 +113,11 @@ class HomeworkList(ListView):
     model = UploadTeacher
     ordering = ['submit_time']
     template_name = 'Teaching/homework_list.html'
-    paginate_by = 2
+
+    def get_queryset(self):
+        objects = super(HomeworkList, self).get_queryset().filter(
+            data_class=self.request.user.user_info.user_class)
+        return objects
 
 
 class HomeworkDelete(DeleteView):

@@ -15,6 +15,9 @@ class UserInfo(models.Model):
     identity = models.IntegerField(verbose_name='身份',
                                    choices=USER_IDENTITIES)
     phone = models.CharField(verbose_name='电话', max_length=20)
+    user_class = models.IntegerField(verbose_name='实践班',
+                                     choices=PRACTICE_CLASS,
+                                     default=PRACTICE_CLASS[0][0])
 
     class Meta:
         verbose_name = '用户信息'
@@ -41,8 +44,6 @@ class StudentInfo(UserInfo):
                                          default=0)
     description = models.CharField(verbose_name='个人简介', max_length=100,
                                    null=True, blank=True)
-    stu_class = models.IntegerField(verbose_name='实践班', choices=PRACTICE_CLASS,
-                                    default=PRACTICE_CLASS[0][0])
 
     class Meta:
         verbose_name = '学生信息'
@@ -56,8 +57,6 @@ class TeacherInfo(UserInfo):
                                      related_name='teacher_info')
     teacher_id = models.CharField(verbose_name='教工号', max_length=20)
     Title = models.IntegerField(verbose_name='职称', choices=TEACHER_TITLE,)
-    tea_class = models.IntegerField(verbose_name='实践班', choices=PRACTICE_CLASS,
-                                    default=PRACTICE_CLASS[0][0])
 
     class Meta:
         verbose_name = '教师信息'

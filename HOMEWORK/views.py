@@ -21,6 +21,7 @@ class UploadAdd(CreateView):
                 file_model = Upload()
                 file_model.file_field = my_form.cleaned_data['file_field']
                 file_model.user = self.request.user
+                file_model.data_class = self.request.user.user_info.user_class
                 file_model.save()
                 return HttpResponseRedirect('/Homework/list')
             except Exception as e:

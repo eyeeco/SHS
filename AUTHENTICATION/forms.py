@@ -28,7 +28,7 @@ class StudentUpdateForm(forms.ModelForm):
 
 class RegisterForm(forms.ModelForm):
     # TODO: Define other fields here
-    user_name = forms.CharField(label='用户名', widget=forms.TextInput())
+    username = forms.CharField(label='用户名', widget=forms.TextInput())
     name = forms.CharField(label='姓名', widget=forms.TextInput())
     password = forms.CharField(
         label='密码',
@@ -50,11 +50,8 @@ class RegisterForm(forms.ModelForm):
 
     class Meta:
         model = UserInfo
-        fields = ['email', 'user_name', 'password', 'confirm_password',
-                  'name', 'phone']
-
-    def __init__(self, *args, **kwargs):
-        super(RegisterForm, self).__init__(*args, **kwargs)
+        fields = ['email', 'username', 'password', 'confirm_password',
+                  'name', 'phone', 'user_class']
 
     def clean(self):
         cleaned_data = super(RegisterForm, self).clean()
@@ -73,6 +70,7 @@ class RegisterForm(forms.ModelForm):
                 '两次输入密码不一致']
         if errors:
             raise forms.ValidationError(errors)
+        print(errors)
         return cleaned_data
 
 
@@ -80,6 +78,6 @@ class StudentRegisterForm(RegisterForm):
 
     class Meta:
         model = StudentInfo
-        fields = ['email', 'user_name', 'password', 'confirm_password',
+        fields = ['email', 'username', 'password', 'confirm_password',
                   'name', 'phone', 'student_id', 'institute', 'education',
-                  'stu_class']
+                  'user_class']

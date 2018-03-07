@@ -104,7 +104,7 @@ class UploadHomework(CreateView):
                 file_model.file_field = my_form.cleaned_data['file_field']
                 file_model.user = self.request.user
                 file_model.save()
-                return HttpResponseRedirect('/Teaching/homeworklist')
+                return HttpResponseRedirect('/Teaching/homeworklist/1')
             except Exception as e:
                 print(str(e))
         return render(request, 'Teaching/homework_add.html', {'form': my_form})
@@ -118,19 +118,12 @@ class HomeworkList(ListView):
     model = UploadTeacher
     ordering = ['submit_time']
     template_name = 'Teaching/homework_list.html'
-
-    def get_queryset(self):
-        objects = super(HomeworkList, self).get_queryset()
-        return objects
-
-    def get_context_data(self, **kwargs):
-        context = super(HomeworkList, self).get_context_data(**kwargs)
-        return context
+    paginate_by = 2
 
 
 class HomeworkDelete(DeleteView):
     model = UploadTeacher
-    success_url = reverse_lazy('Teaching:homeworklist')
+    success_url = reverse_lazy('Teaching:homeworklist', args=(1,))
     template_name = 'Teaching/homework_list.html'
 
     def get_object(self):
@@ -139,7 +132,7 @@ class HomeworkDelete(DeleteView):
 
 class HomeworkDownload(DetailView):
     model = UploadTeacher
-    success_url = reverse_lazy('Teaching:homeworklist')
+    success_url = reverse_lazy('Teaching:homeworklist', args=(1,))
 
     def get(self, request, *args, **kwargs):
         def file_iterator(file, chunk_size=512):

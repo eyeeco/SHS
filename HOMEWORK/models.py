@@ -16,4 +16,4 @@ class Upload(models.Model):
                              on_delete=models.CASCADE)
     data_class = models.IntegerField(verbose_name='所属实践班',
                                      choices=PRACTICE_CLASS,
-                                     default=PRACTICE_CLASS[1][0])
+                                     default=PRACTICE_CLASS[0][0])

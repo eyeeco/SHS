@@ -22,7 +22,7 @@
                       <tr>
                           <td>{{sheet.user_info}}</td>
                           <td>{{sheet.student_id}}</td>
-                          <td>{{sheet.homework_count}}</td>  
+                          <td>{{sheet.homework_count}}</td>
                           <td>
                           <a type="button" class="btn btn-info" href="{% url 'Teaching:download' sheet.uid %}">下载</a>
                           </td>
@@ -36,6 +36,45 @@
 							</div>
 							<!-- END TABLE HOVER -->
 						</div>
+            {% if is_paginated %}
+            <nav>
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li>
+                        <a href="{% url 'Teaching:index' page=page_obj.previous_page_number %}">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="disabled">
+                        <a href="#">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    {% for pageid in paginator.page_range %}
+                        <li {% if pageid == page_obj.number %}class="active"{% endif %}>
+                            <a href="{% url 'Teaching:index' page=pageid %}">{{ pageid }}</a>
+                        </li>
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                    <li>
+                        <a href="{% url 'Teaching:index' page=page_obj.next_page_number %}">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li {% if not page_obj.has_next %}class="disabled"{% endif %}>
+                        <a href="#">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
 </div>
 </div>
 </div>

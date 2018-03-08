@@ -11,7 +11,7 @@
    <div class="form-group">
        <div class="input-group">
            <div class="input-group-addon"><i class="fa fa-user"></i></div>
-           {{form.user_name|addcls:'form-control 用户名'}}
+           {{form.username|addcls:'form-control 用户名'}}
        </div>
   </div>
   <div class="form-group">
@@ -24,6 +24,12 @@
      <div class="input-group">
          <div class="input-group-addon"><i class="fa fa-key"></i></div>
          {{form.confirm_password|addcls:'form-control 确认密码'}}
+     </div>
+ </div>
+ <div class="form-group">
+     <div class="input-group">
+         <div class="input-group-addon"><i class="fa fa-group"></i></div>
+         {{form.user_class|addcls:'form-control 实践班选择'}}
      </div>
  </div>
  <div class="form-group">

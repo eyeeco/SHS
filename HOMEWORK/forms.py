@@ -1,13 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from HOMEWORK.models import Homework, Upload
-
-
-class HomeworkAdd(ModelForm):
-    class Meta:
-        model = Homework
-        fields = ['title', 'content']
+from HOMEWORK.models import Upload
 
 
 class FileUploadForm(ModelForm):

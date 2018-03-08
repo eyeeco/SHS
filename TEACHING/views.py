@@ -113,6 +113,7 @@ class HomeworkList(ListView):
     model = UploadTeacher
     ordering = ['submit_time']
     template_name = 'Teaching/homework_list.html'
+    paginate_by = 6
 
     def get_queryset(self):
         objects = super(HomeworkList, self).get_queryset().filter(

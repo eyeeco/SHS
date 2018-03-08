@@ -35,7 +35,7 @@ class StudentRegisterView(CreateView):
     success_url = reverse_lazy('index')
 
     def form_valid(self, form):
-        username = form.cleaned_data['user_name']
+        username = form.cleaned_data['username']
         first_name = form.cleaned_data['name']
         password = form.cleaned_data['password']
         email = form.cleaned_data['email']

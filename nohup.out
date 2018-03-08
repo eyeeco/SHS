@@ -1,0 +1,249 @@
+[uWSGI] getting INI configuration from wsgi.ini
+*** Starting uWSGI 2.0.16 (64bit) on [Wed Mar  7 10:21:49 2018] ***
+compiled with version: 4.8.2 20140120 (Red Hat 4.8.2-15) on 12 February 2018 22:16:27
+os: Linux-4.4.0-91-generic #114-Ubuntu SMP Tue Aug 8 11:56:56 UTC 2017
+nodename: VM-50-61-ubuntu
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/ubuntu/SHS
+detected binary path: /home/ubuntu/anaconda3/envs/py36/bin/uwsgi
+dropping root privileges as early as possible
+chdir() to /home/ubuntu/SHS
+your processes number limit is 3306
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8008 fd 3
+dropping root privileges after socket binding
+Python version: 3.6.4 |Anaconda, Inc.| (default, Jan 16 2018, 18:12:19)  [GCC 7.2.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x15afdb0
+dropping root privileges after plugin initialization
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x15afdb0 pid: 1849 (default app)
+dropping root privileges after application loading
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 1849)
+spawned uWSGI worker 1 (pid: 1853, cores: 1)
+spawned uWSGI worker 2 (pid: 1854, cores: 1)
+spawned uWSGI worker 3 (pid: 1855, cores: 1)
+spawned uWSGI worker 4 (pid: 1856, cores: 1)
+[pid: 1856|app: 0|req: 1/1] 202.118.67.200 () {46 vars in 910 bytes} [Wed Mar  7 02:22:01 2018] GET /Teaching/ => generated 5561 bytes in 122 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1853|app: 0|req: 1/2] 202.118.67.200 () {46 vars in 910 bytes} [Wed Mar  7 02:22:02 2018] GET /Teaching/ => generated 5561 bytes in 123 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1853|app: 0|req: 2/3] 123.207.226.25 () {38 vars in 693 bytes} [Wed Mar  7 02:22:03 2018] GET /Tools/profile/b953adb2-186e-4a55-ba18-d30c9c5e08ea => generated 2438 bytes in 6 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+Loading pages (1/6)
+[>                                                           ] 0%[======>                                                     ] 10%[==================>                                         ] 30%[============================================================] 100%Counting pages (2/6)                                               
+[============================================================] Object 1 of 1Resolving links (4/6)                                                       
+[============================================================] Object 1 of 1Loading headers and footers (5/6)                                           
+Printing pages (6/6)
+[>                                                           ] Preparing[============================================================] Page 1 of 1Done                                                                      
+[pid: 1854|app: 0|req: 1/4] 202.118.67.200 () {44 vars in 978 bytes} [Wed Mar  7 02:22:03 2018] GET /Teaching/download/b953adb2-186e-4a55-ba18-d30c9c5e08ea => generated 1359680 bytes in 705 msecs (HTTP/1.1 200) 3 headers in 159 bytes (2656 switches on core 0)
+SIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+goodbye to uWSGI.
+[uWSGI] getting INI configuration from wsgi.ini
+*** Starting uWSGI 2.0.16 (64bit) on [Wed Mar  7 10:22:46 2018] ***
+compiled with version: 4.8.2 20140120 (Red Hat 4.8.2-15) on 12 February 2018 22:16:27
+os: Linux-4.4.0-91-generic #114-Ubuntu SMP Tue Aug 8 11:56:56 UTC 2017
+nodename: VM-50-61-ubuntu
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/ubuntu/SHS
+detected binary path: /home/ubuntu/anaconda3/envs/py36/bin/uwsgi
+dropping root privileges as early as possible
+chdir() to /home/ubuntu/SHS
+your processes number limit is 3306
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address :8008 fd 3
+dropping root privileges after socket binding
+Python version: 3.6.4 |Anaconda, Inc.| (default, Jan 16 2018, 18:12:19)  [GCC 7.2.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x214edb0
+dropping root privileges after plugin initialization
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x214edb0 pid: 1923 (default app)
+dropping root privileges after application loading
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 1923)
+spawned uWSGI worker 1 (pid: 1926, cores: 1)
+spawned uWSGI worker 2 (pid: 1928, cores: 1)
+spawned uWSGI worker 3 (pid: 1929, cores: 1)
+spawned uWSGI worker 4 (pid: 1930, cores: 1)
+[pid: 1930|app: 0|req: 1/1] 202.118.67.200 () {46 vars in 910 bytes} [Wed Mar  7 02:22:49 2018] GET /Teaching/ => generated 5561 bytes in 115 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1926|app: 0|req: 1/2] 202.118.67.200 () {46 vars in 910 bytes} [Wed Mar  7 02:22:50 2018] GET /Teaching/ => generated 5561 bytes in 113 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1926|app: 0|req: 2/3] 123.207.226.25 () {38 vars in 693 bytes} [Wed Mar  7 02:22:51 2018] GET /Tools/profile/b953adb2-186e-4a55-ba18-d30c9c5e08ea => generated 2438 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+Loading pages (1/6)
+[>                                                           ] 0%[======>                                                     ] 10%[==================>                                         ] 30%[============================================================] 100%Counting pages (2/6)                                               
+[============================================================] Object 1 of 1Resolving links (4/6)                                                       
+[============================================================] Object 1 of 1Loading headers and footers (5/6)                                           
+Printing pages (6/6)
+[>                                                           ] Preparing[============================================================] Page 1 of 1Done                                                                      
+[pid: 1930|app: 0|req: 2/4] 202.118.67.200 () {44 vars in 978 bytes} [Wed Mar  7 02:22:51 2018] GET /Teaching/download/b953adb2-186e-4a55-ba18-d30c9c5e08ea => generated 1359680 bytes in 588 msecs (HTTP/1.1 200) 3 headers in 159 bytes (2656 switches on core 0)
+Gracefully killing worker 3 (pid: 1929)...
+Gracefully killing worker 2 (pid: 1928)...
+Gracefully killing worker 1 (pid: 1926)...
+...gracefully killing workers...
+Gracefully killing worker 4 (pid: 1930)...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /home/ubuntu/SHS
+closing all non-uwsgi socket fds > 2 (max_fd = 1024)...
+found fd 3 mapped to socket 0 (:8008)
+running /home/ubuntu/anaconda3/envs/py36/bin/uwsgi
+[uWSGI] getting INI configuration from wsgi.ini
+*** Starting uWSGI 2.0.16 (64bit) on [Wed Mar  7 02:22:58 2018] ***
+compiled with version: 4.8.2 20140120 (Red Hat 4.8.2-15) on 12 February 2018 22:16:27
+os: Linux-4.4.0-91-generic #114-Ubuntu SMP Tue Aug 8 11:56:56 UTC 2017
+nodename: VM-50-61-ubuntu
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 1
+current working directory: /home/ubuntu/SHS
+detected binary path: /home/ubuntu/anaconda3/envs/py36/bin/uwsgi
+dropping root privileges as early as possible
+chdir() to /home/ubuntu/SHS
+your processes number limit is 3306
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 inherited INET address :8008 fd 3
+dropping root privileges after socket binding
+Python version: 3.6.4 |Anaconda, Inc.| (default, Jan 16 2018, 18:12:19)  [GCC 7.2.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x2568c10
+dropping root privileges after plugin initialization
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 364600 bytes (356 KB) for 4 cores
+*** Operational MODE: preforking ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x2568c10 pid: 1923 (default app)
+dropping root privileges after application loading
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 1923)
+spawned uWSGI worker 1 (pid: 1941, cores: 1)
+spawned uWSGI worker 2 (pid: 1942, cores: 1)
+spawned uWSGI worker 3 (pid: 1943, cores: 1)
+spawned uWSGI worker 4 (pid: 1944, cores: 1)
+[pid: 1944|app: 0|req: 1/1] 202.118.67.200 () {46 vars in 910 bytes} [Wed Mar  7 02:23:02 2018] GET /Teaching/ => generated 5561 bytes in 118 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 1/2] 202.118.67.200 () {46 vars in 910 bytes} [Wed Mar  7 02:23:03 2018] GET /Teaching/ => generated 5561 bytes in 130 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 2/3] 123.207.226.25 () {38 vars in 693 bytes} [Wed Mar  7 02:23:04 2018] GET /Tools/profile/b953adb2-186e-4a55-ba18-d30c9c5e08ea => generated 2438 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+Loading pages (1/6)
+[>                                                           ] 0%[======>                                                     ] 10%[==================>                                         ] 30%[============================================================] 100%Counting pages (2/6)                                               
+[============================================================] Object 1 of 1Resolving links (4/6)                                                       
+[============================================================] Object 1 of 1Loading headers and footers (5/6)                                           
+Printing pages (6/6)
+[>                                                           ] Preparing[============================================================] Page 1 of 1Done                                                                      
+[pid: 1942|app: 0|req: 1/4] 202.118.67.200 () {44 vars in 978 bytes} [Wed Mar  7 02:23:04 2018] GET /Teaching/download/b953adb2-186e-4a55-ba18-d30c9c5e08ea => generated 1359680 bytes in 644 msecs (HTTP/1.1 200) 3 headers in 159 bytes (2656 switches on core 0)
+[pid: 1942|app: 0|req: 2/5] 123.207.226.25 () {38 vars in 693 bytes} [Wed Mar  7 03:11:01 2018] GET /Tools/profile/b953adb2-186e-4a55-ba18-d30c9c5e08ea => generated 2438 bytes in 25 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+Loading pages (1/6)
+[>                                                           ] 0%[======>                                                     ] 10%[==================>                                         ] 30%[============================================================] 100%Counting pages (2/6)                                               
+[============================================================] Object 1 of 1Resolving links (4/6)                                                       
+[============================================================] Object 1 of 1Loading headers and footers (5/6)                                           
+Printing pages (6/6)
+[>                                                           ] Preparing[============================================================] Page 1 of 1Done                                                                      
+[pid: 1941|app: 0|req: 3/6] 171.13.14.151 () {42 vars in 867 bytes} [Wed Mar  7 03:11:01 2018] GET /Teaching/download/b953adb2-186e-4a55-ba18-d30c9c5e08ea => generated 1359680 bytes in 651 msecs (HTTP/1.1 200) 3 headers in 159 bytes (2656 switches on core 0)
+[pid: 1941|app: 0|req: 4/7] 123.207.226.25 () {38 vars in 693 bytes} [Wed Mar  7 03:11:54 2018] GET /Tools/profile/b953adb2-186e-4a55-ba18-d30c9c5e08ea => generated 2438 bytes in 5 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+Loading pages (1/6)
+[>                                                           ] 0%[======>                                                     ] 10%[==================>                                         ] 30%[============================================================] 100%Counting pages (2/6)                                               
+[============================================================] Object 1 of 1Resolving links (4/6)                                                       
+[============================================================] Object 1 of 1Loading headers and footers (5/6)                                           
+Printing pages (6/6)
+[>                                                           ] Preparing[============================================================] Page 1 of 1Done                                                                      
+[pid: 1942|app: 0|req: 3/8] 101.199.112.54 () {40 vars in 763 bytes} [Wed Mar  7 03:11:54 2018] GET /Teaching/download/b953adb2-186e-4a55-ba18-d30c9c5e08ea => generated 1359680 bytes in 636 msecs (HTTP/1.1 200) 3 headers in 159 bytes (2656 switches on core 0)
+[pid: 1941|app: 0|req: 5/9] 171.13.14.145 () {42 vars in 747 bytes} [Wed Mar  7 03:12:02 2018] GET /Homework/list/ => generated 27 bytes in 35 msecs (HTTP/1.1 500) 4 headers in 126 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 4/10] 182.118.20.151 () {42 vars in 748 bytes} [Wed Mar  7 03:12:02 2018] GET /Homework/list/ => generated 27 bytes in 32 msecs (HTTP/1.1 500) 4 headers in 126 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 6/11] 220.181.132.196 () {40 vars in 684 bytes} [Wed Mar  7 03:12:32 2018] GET /Homework/list/ => generated 27 bytes in 24 msecs (HTTP/1.1 500) 4 headers in 126 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 7/12] 123.207.226.25 () {38 vars in 693 bytes} [Wed Mar  7 03:12:43 2018] GET /Tools/profile/b953adb2-186e-4a55-ba18-d30c9c5e08ea => generated 2438 bytes in 4 msecs (HTTP/1.1 200) 3 headers in 110 bytes (1 switches on core 0)
+Loading pages (1/6)
+[>                                                           ] 0%[======>                                                     ] 10%[==================>                                         ] 30%[============================================================] 100%Counting pages (2/6)                                               
+[============================================================] Object 1 of 1Resolving links (4/6)                                                       
+[============================================================] Object 1 of 1Loading headers and footers (5/6)                                           
+Printing pages (6/6)
+[>                                                           ] Preparing[============================================================] Page 1 of 1Done                                                                      
+Wed Mar  7 03:12:43 2018 - uwsgi_response_write_body_do(): Broken pipe [core/writer.c line 429] during GET /Teaching/download/b953adb2-186e-4a55-ba18-d30c9c5e08ea (182.118.20.151)
+OSError: write error
+[pid: 1942|app: 0|req: 5/13] 182.118.20.151 () {44 vars in 830 bytes} [Wed Mar  7 03:12:43 2018] GET /Teaching/download/b953adb2-186e-4a55-ba18-d30c9c5e08ea => generated 1330688 bytes in 570 msecs (HTTP/1.1 200) 3 headers in 159 bytes (2599 switches on core 0)
+[pid: 1941|app: 0|req: 8/14] 182.118.20.144 () {44 vars in 745 bytes} [Wed Mar  7 03:12:47 2018] GET /Homework/list/ => generated 27 bytes in 32 msecs (HTTP/1.1 500) 4 headers in 126 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 6/15] 182.118.20.144 () {44 vars in 750 bytes} [Wed Mar  7 03:13:17 2018] GET /Homework/list/ => generated 27 bytes in 25 msecs (HTTP/1.1 500) 4 headers in 126 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 9/16] 171.13.14.151 () {44 vars in 744 bytes} [Wed Mar  7 03:13:32 2018] GET /Homework/list/ => generated 27 bytes in 24 msecs (HTTP/1.1 500) 4 headers in 126 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 10/17] 202.118.67.200 () {46 vars in 891 bytes} [Wed Mar  7 03:37:53 2018] GET / => generated 9956 bytes in 11 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 7/18] 202.118.67.200 () {42 vars in 818 bytes} [Wed Mar  7 03:40:15 2018] GET / => generated 9956 bytes in 16 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 11/19] 202.118.67.200 () {44 vars in 905 bytes} [Wed Mar  7 03:40:23 2018] GET /Teaching/homeworklist/ => generated 6647 bytes in 12 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 8/20] 202.118.67.200 () {44 vars in 925 bytes} [Wed Mar  7 03:40:24 2018] GET /Teaching/addhomework/ => generated 4958 bytes in 17 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 12/21] 202.118.67.200 () {44 vars in 926 bytes} [Wed Mar  7 03:40:25 2018] GET /Teaching/homeworklist/ => generated 6647 bytes in 9 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 9/22] 202.118.67.200 () {52 vars in 1190 bytes} [Wed Mar  7 03:40:28 2018] POST /Teaching/homeworkdelete/16956ab8-59bf-43c1-b037-fa4a8ca059d6 => generated 0 bytes in 16 msecs (HTTP/1.1 302) 4 headers in 145 bytes (1 switches on core 0)
+[pid: 1944|app: 0|req: 2/23] 202.118.67.200 () {46 vars in 958 bytes} [Wed Mar  7 03:40:28 2018] GET /Teaching/homeworklist/ => generated 5639 bytes in 13 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 13/24] 202.118.67.200 () {52 vars in 1190 bytes} [Wed Mar  7 03:40:29 2018] POST /Teaching/homeworkdelete/8d1d8955-80d4-4968-a231-3b0a56479911 => generated 0 bytes in 6 msecs (HTTP/1.1 302) 4 headers in 145 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 10/25] 202.118.67.200 () {46 vars in 958 bytes} [Wed Mar  7 03:40:29 2018] GET /Teaching/homeworklist/ => generated 4626 bytes in 9 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 14/26] 202.118.67.200 () {44 vars in 901 bytes} [Wed Mar  7 03:40:31 2018] GET /Teaching/ => generated 5561 bytes in 24 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 11/27] 202.118.67.200 () {44 vars in 914 bytes} [Wed Mar  7 03:40:33 2018] GET /Teaching/homeworklist/ => generated 4626 bytes in 9 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 15/28] 202.118.67.200 () {44 vars in 925 bytes} [Wed Mar  7 03:40:35 2018] GET /Teaching/addhomework/ => generated 4958 bytes in 14 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 12/29] 202.118.67.200 () {44 vars in 900 bytes} [Wed Mar  7 03:40:36 2018] GET /Teaching/ => generated 5561 bytes in 25 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 16/30] 202.118.67.200 () {44 vars in 914 bytes} [Wed Mar  7 03:40:45 2018] GET /Teaching/homeworklist/ => generated 4626 bytes in 8 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 13/31] 202.118.67.200 () {44 vars in 925 bytes} [Wed Mar  7 03:40:46 2018] GET /Teaching/addhomework/ => generated 4958 bytes in 13 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 17/32] 202.118.67.200 () {44 vars in 900 bytes} [Wed Mar  7 03:40:47 2018] GET /Teaching/ => generated 5561 bytes in 26 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 14/33] 202.118.67.200 () {44 vars in 914 bytes} [Wed Mar  7 03:41:28 2018] GET /Authentication/logout/ => generated 0 bytes in 9 msecs (HTTP/1.1 302) 7 headers in 311 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 18/34] 202.118.67.200 () {44 vars in 826 bytes} [Wed Mar  7 03:41:28 2018] GET / => generated 0 bytes in 1 msecs (HTTP/1.1 302) 5 headers in 165 bytes (1 switches on core 0)
+[pid: 1943|app: 0|req: 1/35] 202.118.67.200 () {44 vars in 881 bytes} [Wed Mar  7 03:41:29 2018] GET /Authentication/login/?next=/ => generated 3052 bytes in 92 msecs (HTTP/1.1 200) 7 headers in 381 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 19/36] 202.118.67.200 () {44 vars in 893 bytes} [Wed Mar  7 03:41:30 2018] GET /Authentication/register/ => generated 8132 bytes in 34 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 15/37] 202.118.67.200 () {44 vars in 883 bytes} [Wed Mar  7 03:41:34 2018] GET /Authentication/login/ => generated 3052 bytes in 13 msecs (HTTP/1.1 200) 7 headers in 381 bytes (1 switches on core 0)
+invalid request block size: 21573 (max 4096)...skip
+[pid: 1941|app: 0|req: 20/38] 101.226.68.215 () {38 vars in 655 bytes} [Wed Mar  7 05:45:55 2018] GET /Homework/list => generated 0 bytes in 1 msecs (HTTP/1.1 301) 3 headers in 120 bytes (1 switches on core 0)
+[pid: 1943|app: 0|req: 2/39] 101.226.68.215 () {40 vars in 713 bytes} [Wed Mar  7 05:45:55 2018] GET /Homework/list/ => generated 27 bytes in 64 msecs (HTTP/1.1 500) 4 headers in 126 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 21/40] 202.118.104.203 () {40 vars in 913 bytes} [Wed Mar  7 06:27:27 2018] GET / => generated 0 bytes in 1 msecs (HTTP/1.1 302) 5 headers in 165 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 16/41] 202.118.104.203 () {40 vars in 968 bytes} [Wed Mar  7 06:27:27 2018] GET /Authentication/login/?next=/ => generated 3052 bytes in 4 msecs (HTTP/1.1 200) 7 headers in 381 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 22/42] 183.57.53.177 () {38 vars in 628 bytes} [Wed Mar  7 06:27:27 2018] GET / => generated 0 bytes in 1 msecs (HTTP/1.1 302) 5 headers in 165 bytes (1 switches on core 0)
+[pid: 1943|app: 0|req: 3/43] 183.57.53.177 () {40 vars in 726 bytes} [Wed Mar  7 06:27:27 2018] GET /Authentication/login/?next=/ => generated 3052 bytes in 5 msecs (HTTP/1.1 200) 7 headers in 381 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 23/44] 202.118.104.203 () {40 vars in 913 bytes} [Wed Mar  7 06:27:30 2018] GET / => generated 0 bytes in 1 msecs (HTTP/1.1 302) 5 headers in 165 bytes (1 switches on core 0)
+[pid: 1944|app: 0|req: 3/45] 202.118.104.203 () {40 vars in 968 bytes} [Wed Mar  7 06:27:30 2018] GET /Authentication/login/?next=/ => generated 3052 bytes in 15 msecs (HTTP/1.1 200) 7 headers in 381 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 24/46] 120.204.17.71 () {36 vars in 612 bytes} [Wed Mar  7 06:28:27 2018] GET /Authentication/login/?next= => generated 3052 bytes in 10 msecs (HTTP/1.1 200) 7 headers in 381 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 17/47] 120.204.17.69 () {36 vars in 544 bytes} [Wed Mar  7 06:28:27 2018] GET / => generated 0 bytes in 1 msecs (HTTP/1.1 302) 5 headers in 165 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 25/48] 222.26.223.6 () {38 vars in 702 bytes} [Wed Mar  7 07:23:03 2018] GET /favicon.ico => generated 85 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 100 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 18/49] 222.26.223.6 () {42 vars in 690 bytes} [Wed Mar  7 07:23:08 2018] GET / => generated 9956 bytes in 7 msecs (HTTP/1.1 200) 4 headers in 124 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 26/50] 222.26.223.6 () {44 vars in 777 bytes} [Wed Mar  7 07:23:11 2018] GET /Authentication/logout/ => generated 0 bytes in 8 msecs (HTTP/1.1 302) 7 headers in 311 bytes (1 switches on core 0)
+[pid: 1944|app: 0|req: 4/51] 222.26.223.6 () {44 vars in 689 bytes} [Wed Mar  7 07:23:11 2018] GET / => generated 0 bytes in 1 msecs (HTTP/1.1 302) 5 headers in 165 bytes (1 switches on core 0)
+[pid: 1943|app: 0|req: 4/52] 222.26.223.6 () {44 vars in 744 bytes} [Wed Mar  7 07:23:11 2018] GET /Authentication/login/?next=/ => generated 3052 bytes in 4 msecs (HTTP/1.1 200) 7 headers in 381 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 19/53] 222.26.223.6 () {44 vars in 765 bytes} [Wed Mar  7 07:23:25 2018] GET /Authentication/register/ => generated 8132 bytes in 30 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 27/54] 222.26.223.6 () {44 vars in 755 bytes} [Wed Mar  7 07:23:27 2018] GET /Authentication/login/ => generated 3052 bytes in 4 msecs (HTTP/1.1 200) 7 headers in 381 bytes (1 switches on core 0)
+[pid: 1944|app: 0|req: 5/55] 106.120.161.66 () {38 vars in 628 bytes} [Wed Mar  7 07:23:37 2018] GET / => generated 0 bytes in 1 msecs (HTTP/1.1 302) 5 headers in 165 bytes (1 switches on core 0)
+[pid: 1943|app: 0|req: 5/56] 106.120.161.66 () {38 vars in 688 bytes} [Wed Mar  7 07:23:37 2018] GET /Authentication/login/?next=/ => generated 3052 bytes in 5 msecs (HTTP/1.1 200) 7 headers in 381 bytes (1 switches on core 0)
+[pid: 1942|app: 0|req: 20/57] 106.120.161.66 () {38 vars in 701 bytes} [Wed Mar  7 07:23:53 2018] GET /Authentication/register/ => generated 8132 bytes in 25 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 28/58] 101.199.112.54 () {40 vars in 655 bytes} [Wed Mar  7 07:24:03 2018] GET / => generated 0 bytes in 1 msecs (HTTP/1.1 302) 5 headers in 165 bytes (1 switches on core 0)
+[pid: 1943|app: 0|req: 6/59] 101.199.112.54 () {40 vars in 710 bytes} [Wed Mar  7 07:24:04 2018] GET /Authentication/login/?next=/ => generated 3052 bytes in 4 msecs (HTTP/1.1 200) 7 headers in 381 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 29/60] 101.199.108.51 () {40 vars in 703 bytes} [Wed Mar  7 07:24:22 2018] GET /Authentication/register/ => generated 8132 bytes in 27 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+-- unavailable modifier requested: 5 --
+-- unavailable modifier requested: 4 --
+-- unavailable modifier requested: 65 --
+[pid: 1942|app: 0|req: 21/64] 183.57.54.43 () {26 vars in 278 bytes} [Wed Mar  7 19:14:51 2018] GET / => generated 0 bytes in 18 msecs (HTTP/1.0 302) 5 headers in 165 bytes (1 switches on core 0)
+-- unavailable modifier requested: 22 --
+-- unavailable modifier requested: 128 --
+[pid: 1941|app: 0|req: 30/67] 202.118.67.200 () {42 vars in 773 bytes} [Thu Mar  8 09:32:39 2018] GET / => generated 0 bytes in 12 msecs (HTTP/1.1 302) 5 headers in 165 bytes (1 switches on core 0)
+[pid: 1943|app: 0|req: 7/68] 202.118.67.200 () {42 vars in 828 bytes} [Thu Mar  8 09:32:39 2018] GET /Authentication/login/?next=/ => generated 3052 bytes in 13 msecs (HTTP/1.1 200) 7 headers in 381 bytes (1 switches on core 0)
+[pid: 1941|app: 0|req: 31/69] 202.118.67.200 () {42 vars in 828 bytes} [Thu Mar  8 09:32:40 2018] GET /Authentication/login/?next=/ => generated 3052 bytes in 6 msecs (HTTP/1.1 200) 7 headers in 381 bytes (1 switches on core 0)
+Thu Mar  8 09:42:51 2018 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Thu Mar  8 09:42:51 2018 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Thu Mar  8 09:42:51 2018 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!

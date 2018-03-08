@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^Authentication/', include('AUTHENTICATION.urls',
         namespace='auth')),
     url(r'^Homework/', include('HOMEWORK.urls',
-        namespace='homework')),
+        namespace='Homework')),
     url(r'^Teaching/', include('TEACHING.urls',
         namespace='Teaching')),
     url(r'^Tools/', include('TOOLS.urls',

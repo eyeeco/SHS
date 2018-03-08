@@ -26,8 +26,8 @@
                           <td>{{sheet.submit_time}}</td>
                           <td>
                             <div>
-                              <form action="{% url 'homework:cancel' sheet.uid %}" method="post">{% csrf_token %}
-                                <a type="button" class="btn btn-info" href="{% url 'homework:download' sheet.uid %}">下载</a>
+                              <form action="{% url 'Homework:cancel' sheet.uid %}" method="post">{% csrf_token %}
+                                <a type="button" class="btn btn-info" href="{% url 'Homework:download' sheet.uid %}">下载</a>
                                 <input class="btn btn-danger" type="submit" value="删除" onclick="if(confirm('Are you sure you want to delete the file ?')==false)return false;"/>
                               </form>
                             </div>
@@ -40,6 +40,45 @@
 							</div>
 							<!-- END TABLE HOVER -->
 						</div>
+            {% if is_paginated %}
+            <nav>
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li>
+                        <a href="{% url 'Homework:list' page=page_obj.previous_page_number %}">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="disabled">
+                        <a href="#">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    {% for pageid in paginator.page_range %}
+                        <li {% if pageid == page_obj.number %}class="active"{% endif %}>
+                            <a href="{% url 'Homework:list' page=pageid %}">{{ pageid }}</a>
+                        </li>
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                    <li>
+                        <a href="{% url 'Homework:list' page=page_obj.next_page_number %}">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li {% if not page_obj.has_next %}class="disabled"{% endif %}>
+                        <a href="#">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
 </div>
 </div>
 </div>

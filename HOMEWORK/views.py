@@ -23,7 +23,7 @@ class UploadAdd(CreateView):
                 file_model.user = self.request.user
                 file_model.data_class = self.request.user.user_info.user_class
                 file_model.save()
-                return HttpResponseRedirect('/Homework/list')
+                return HttpResponseRedirect('/Homework/list/1')
             except Exception as e:
                 print(str(e))
         return render(request, 'Homework/upload_add.html', {'form': my_form})
@@ -37,6 +37,7 @@ class Uploadlist(ListView):
     model = Upload
     ordering = ['submit_time']
     template_name = 'Homework/upload_list.html'
+    paginate_by = 6
 
     def get_queryset(self):
         return super(Uploadlist, self).get_queryset().filter(
@@ -45,7 +46,7 @@ class Uploadlist(ListView):
 
 class UploadCancel(DeleteView):
     model = Upload
-    success_url = reverse_lazy('homework:list')
+    success_url = reverse_lazy('Homework:list', args=(1,))
     template_name = 'Homework/upload_list.html'
     context_object_name = "Upload_list"
 
@@ -55,7 +56,7 @@ class UploadCancel(DeleteView):
 
 class Download(DetailView):
     model = Upload
-    success_url = reverse_lazy('homework:list')
+    success_url = reverse_lazy('Homework:list', args=(1,))
 
     def get(self, request, *args, **kwargs):
         def file_iterator(file, chunk_size=512):

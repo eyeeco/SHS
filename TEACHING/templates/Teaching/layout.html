@@ -11,8 +11,8 @@
                 <ul class="nav">
                   <li><a href="{% url 'Teaching:homeworklist' page=1 %}" class="">作业模板</a></li>
                   {% if request.user.user_info.identity == USER_IDENTITY_STUDENT %}
-                  <li><a href="{% url 'homework:list' %}" class="">已上传作业列表</a></li>
-                  <li><a href="{% url 'homework:upload' %}" class="">上传作业</a></li>
+                  <li><a href="{% url 'Homework:list' page=1%}" class="">已上传作业列表</a></li>
+                  <li><a href="{% url 'Homework:upload' %}" class="">上传作业</a></li>
                   {% endif %}
                   {% if request.user.user_info.identity == USER_IDENTITY_TEACHER %}
                   <li><a href="{% url 'Teaching:addhomework' %}" class="">上传作业模板</a></li>

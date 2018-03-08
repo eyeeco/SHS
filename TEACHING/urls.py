@@ -3,7 +3,7 @@ from django.conf.urls import url, include
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.StudentList.as_view(), name='index'),
+    url(r'^(?P<page>\d+)$', views.StudentList.as_view(), name='index'),
     url(r'^allexport$', views.AllHomeworkExport.as_view(),
         name='allexport'),
     url(r'^download/(?P<uid>.+)$', views.ExportDownload.as_view(),

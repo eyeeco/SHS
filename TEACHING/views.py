@@ -18,6 +18,7 @@ class StudentList(ListView):
     model = StudentInfo
     ordering = ['student_id']
     template_name = 'Teaching/student_list.html'
+    paginate_by = 2
 
     def get_queryset(self):
         user_class = self.request.user.user_info.user_class

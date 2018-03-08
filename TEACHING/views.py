@@ -44,7 +44,7 @@ class AllHomeworkExport(DetailView):
                         break
         # name = '全部作业'
         temp = {}
-        student = StudentInfo.objects.all().order_by('student_id')
+        student = StudentInfo.objects.exclude(homework_count=0).order_by('student_id')
         for stu in student:
             homework = stu.user_info.user.upload_set.all()
             temp[stu] = homework

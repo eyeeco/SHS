@@ -122,7 +122,8 @@ class HomeworkList(ListView):
 
     def get_queryset(self):
         objects = super(HomeworkList, self).get_queryset().filter(
-            data_class=self.request.user.user_info.user_class)
+            data_class=self.request.user.user_info.user_class).filter(
+                data_type=1)
         return objects
 
 

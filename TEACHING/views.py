@@ -22,7 +22,10 @@ class StudentList(ListView):
     def get_queryset(self):
         user_class = self.request.user.user_info.user_class
         objects = super(StudentList, self).get_queryset().filter(
-            user_info__user_class__contains=user_class)
+            user_info__user_class__contains=user_class).order_by('student_id')
+        for p in objects:
+            p.homework_count = p.user_info.user.upload_set.all().count()
+            p.save()
         return objects
 
 

@@ -33,7 +33,7 @@ def MergePDF(filepath, filehead, outfile):
 '''
 
 def MergePDF(filepath, filehead, outfile):
-    output = PdfFileMerger()
+    output = PdfFileMerger(strict=False)
     output.append(open(filehead, "rb"))
     for each in filepath:
         pdf_path = osp.join(settings.MEDIA_ROOT, str(each.file_field))

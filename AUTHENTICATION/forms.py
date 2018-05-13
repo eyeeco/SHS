@@ -70,7 +70,6 @@ class RegisterForm(forms.ModelForm):
                 '两次输入密码不一致']
         if errors:
             raise forms.ValidationError(errors)
-        print(errors)
         return cleaned_data
 
 

@@ -78,7 +78,7 @@ class ExportDownload(DetailView):
                         break
         file_path = str(settings.BASE_DIR) + str(
             settings.TMP_FILES_URL) + '/' + str(
-            student.user_info) + '.pdf'
+            student.user_info.id) + '.pdf'
         response = StreamingHttpResponse(file_iterator(file_path))
         response['Content-Type'] = 'application/octet-stream'
         response['Content-Disposition'] = 'attachment;\

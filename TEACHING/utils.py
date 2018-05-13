@@ -38,12 +38,12 @@ def export_homework(request, homework, student):
     url_head = str(request.META.get('HTTP_HOST'))
     url_foot = reverse("tools:profile", args=(student.user_info.uid,))
     url = url_head + url_foot
-    fname = '{}的封皮.pdf'.format(student.user_info)
+    fname = '{}_cover.pdf'.format(student.user_info.id)
     save_path = osp.join(settings.TMP_FILES_ROOT, fname)
     pdfkit.from_url(url, save_path)
 
     # 拼接作业
-    fname2 = '{}.pdf'.format(student.user_info)
+    fname2 = '{}.pdf'.format(student.user_info.id)
     save_path_content = osp.join(settings.TMP_FILES_ROOT, fname2)
     MergePDF(homework, save_path, save_path_content)
     return save_path_content

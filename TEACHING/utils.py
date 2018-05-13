@@ -3,9 +3,9 @@ from django.conf import settings
 import os.path as osp
 
 import pdfkit
-from PyPDF2 import PdfFileWriter, PdfFileReader
+from PyPDF2 import PdfFileWriter, PdfFileReader, PdfFileMerger
 
-
+'''
 def MergePDF(filepath, filehead, outfile):
     output = PdfFileWriter()
     outputPages = 0
@@ -30,7 +30,17 @@ def MergePDF(filepath, filehead, outfile):
     outputStream = open(outfile, "wb")
     output.write(outputStream)
     outputStream.close()
+'''
 
+def MergePDF(filepath, filehead, outfile):
+    output = PdfFileMerger()
+    output.append(open(filehead, "rb"))
+    for each in file_path:
+        pdf_path = osp.join(settings.MEDIA_ROOT, str(each.file_field))
+        output.append(open(pdf_path, "rb"))
+    outputStream = open(outfile, "wb")
+    output.write(outputStream)
+    outputStream.close()
 
 def export_homework(request, homework, student):
 

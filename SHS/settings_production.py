@@ -1,3 +1,3 @@
-from settings import *
+import settings
 
-DEBUG = False 
+DEBUG = False

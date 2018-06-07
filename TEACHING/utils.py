@@ -32,8 +32,9 @@ def MergePDF(filepath, filehead, outfile):
     outputStream.close()
 '''
 
+
 def MergePDF(filepath, filehead, outfile):
-    output = PdfFileMerger(strict=False)
+    output = PdfFileMerger(strict=True)
     output.append(open(filehead, "rb"))
     for each in filepath:
         pdf_path = osp.join(settings.MEDIA_ROOT, str(each.file_field))
@@ -41,6 +42,7 @@ def MergePDF(filepath, filehead, outfile):
     outputStream = open(outfile, "wb")
     output.write(outputStream)
     outputStream.close()
+
 
 def export_homework(request, homework, student):
 
